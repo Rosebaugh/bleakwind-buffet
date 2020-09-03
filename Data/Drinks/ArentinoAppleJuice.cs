@@ -7,9 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
-using Data.Enums;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
     public class AretineAppleJuice
     {
