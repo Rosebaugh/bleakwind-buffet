@@ -42,7 +42,7 @@ namespace BleakwindBuffet.Data.Drinks
                 List<String> specialInstructions = new List<string>();
                 if (!Ice)
                 {
-                    specialInstructions.Add("hold ice");
+                    specialInstructions.Add("Hold ice");
                 }
                 if (Lemon)
                 {
