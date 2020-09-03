@@ -14,11 +14,11 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets the price of the Philly cheesesteak sandwich
         /// </summary>
-        public static double Price => 7.32;
+        public double Price => 7.23;
         /// <summary>
         /// Gets the calories of the Philly cheesesteak sandwich
         /// </summary>
-        public static uint Calories => 784;
+        public uint Calories => 784;
         /// <summary>
         /// gets the special instructions on making the Philly cheesesteak sandwich
         /// </summary>

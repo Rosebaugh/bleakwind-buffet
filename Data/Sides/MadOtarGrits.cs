@@ -19,11 +19,11 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 1.22;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 1.58;
                 }
@@ -41,11 +41,11 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 105;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 142;
                 }
@@ -59,7 +59,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// overrides default returned string
@@ -67,7 +67,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <returns>string "[Size] Mad Otar Grits"</returns>
         public override string ToString()
         {
-            return ("{0} Mad Otar Grits", size.ToString()).ToString();
+            return Size.ToString() + " Mad Otar Grits";
         }
     }
 }

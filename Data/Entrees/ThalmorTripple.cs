@@ -15,11 +15,11 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets the price of the burger
         /// </summary>
-        public static double Price => 8.32;
+        public double Price => 8.32;
         /// <summary>
         /// Gets the calories of the burger
         /// </summary>
-        public static uint Calories => 943;
+        public uint Calories => 943;
         /// <summary>
         /// gets the special instructions on making the burger
         /// </summary>

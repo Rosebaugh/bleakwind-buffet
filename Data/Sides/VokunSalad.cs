@@ -20,11 +20,11 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 0.93;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 1.28;
                 }
@@ -42,11 +42,11 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 41;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 52;
                 }
@@ -60,7 +60,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// overrides default returned string
@@ -68,7 +68,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <returns>string "[Size] Vokun Salad"</returns>
         public override string ToString()
         {
-            return ("{0} Vokun Salad", size.ToString()).ToString();
+            return Size.ToString() + " Vokun Salad";
         }
     }
 }

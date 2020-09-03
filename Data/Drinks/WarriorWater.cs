@@ -15,12 +15,12 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Gets the price of the Drink
         /// </summary>
-        public static double Price = 0.00;
+        public double Price = 0.00;
 
         /// <summary>
         /// Gets the calories of the Drink
         /// </summary>
-        public static uint Calories = 0;
+        public uint Calories = 0;
 
         /// <summary>
         /// creates get set of bool of weither you want a Ice or not
@@ -30,7 +30,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// gets the special instructions on making the Drink
@@ -63,7 +63,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <returns>string "[Size] Warrior Water"</returns>
         public override string ToString()
         {
-            return ("{0} Warrior Water", size.ToString()).ToString();
+            return Size.ToString() + " Warrior Water";
         }
     }
 }

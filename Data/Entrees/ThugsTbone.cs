@@ -14,11 +14,11 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets the price of the T-Bone
         /// </summary>
-        public static double Price => 6.44;
+        public double Price => 6.44;
         /// <summary>
         /// Gets the calories of the T-Bone
         /// </summary>
-        public static uint Calories => 982;
+        public uint Calories => 982;
 
         /// <summary>
         /// gets the special instructions on making the T-Bone

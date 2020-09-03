@@ -9,16 +9,16 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class GardenOrcOmlette
+    public class GardenOrcOmelette
     {
         /// <summary>
         /// Gets the price of the Vegetarian omelette
         /// </summary>
-        public static double Price => 4.57;
+        public double Price => 4.57;
         /// <summary>
         /// Gets the calories of the Vegetarian omelette
         /// </summary>
-        public static uint Calories => 404;
+        public uint Calories => 404;
         /// <summary>
         /// gets the special instructions on making the Vegetarian omelette
         /// </summary>

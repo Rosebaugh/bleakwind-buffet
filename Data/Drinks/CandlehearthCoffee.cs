@@ -19,11 +19,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 0.75;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 1.25;
                 }
@@ -41,11 +41,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 7;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 10;
                 }
@@ -64,7 +64,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// gets the special instructions on making the Drink
@@ -104,11 +104,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             if (Decaf)
             {
-                return ("{0} Decaf Candlehearth Coffee", size.ToString()).ToString();
+                return Size.ToString() + " Decaf Candlehearth Coffee";
             }
             else
             {
-                return ("{0} Candlehearth Coffee", size.ToString()).ToString();
+                return Size.ToString() + " Candlehearth Coffee";
             }
         }
     }

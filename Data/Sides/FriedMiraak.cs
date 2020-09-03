@@ -19,11 +19,11 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 1.78;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 2.01;
                 }
@@ -41,11 +41,11 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 151;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 236;
                 }
@@ -59,7 +59,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// overrides default returned string
@@ -67,7 +67,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <returns>string "[Size] Fried Miraak"</returns>
         public override string ToString()
         {
-            return ("{0} Fried Miraak", size.ToString()).ToString();
+            return Size.ToString() + " Fried Miraak";
         }
     }
 }

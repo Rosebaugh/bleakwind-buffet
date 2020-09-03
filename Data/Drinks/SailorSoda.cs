@@ -19,11 +19,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 1.42;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 1.74;
                 }
@@ -40,11 +40,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 117;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 153;
                 }
@@ -61,7 +61,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
         /// <summary>
         /// gets the special instructions on making the Drink
         /// </summary>
@@ -88,7 +88,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <returns>string "[Size] [Flavor] Sailor Soda"</returns>
         public override string ToString()
         {
-            return ("{0} {1} Sailor Soda", size.ToString(), Flavor.ToString()).ToString();
+            return Size.ToString() + Flavor.ToString() + " Sailor Soda";
         }
     }
 }

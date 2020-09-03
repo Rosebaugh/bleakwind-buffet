@@ -19,11 +19,11 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 0.42;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 0.76;
                 }
@@ -41,11 +41,11 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 77;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 89;
                 }
@@ -59,7 +59,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// overrides default returned string
@@ -67,7 +67,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <returns>string "[Size] Aretino Apple Juice"</returns>
         public override string ToString()
         {
-            return ("{0} Dragonborn Waffle Fries", size.ToString()).ToString();
+            return Size.ToString() + " Dragonborn Waffle Fries";
         }
     }
 }

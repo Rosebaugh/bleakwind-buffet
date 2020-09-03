@@ -19,11 +19,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 1.05;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 1.11;
                 }
@@ -41,11 +41,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 56;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 72;
                 }
@@ -63,7 +63,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// gets the special instructions on making the Drink
@@ -87,7 +87,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <returns>string "[Size] Markarth Milk"</returns>
         public override string ToString()
         {
-            return ("{0} Markarth Milk", size.ToString()).ToString();
+            return Size.ToString() + " Markarth Milk";
         }
     }
 }

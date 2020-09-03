@@ -10,7 +10,7 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class AretineAppleJuice
+    public class AretinoAppleJuice
     {
         /// <summary>
         /// Gets the price of the Drink
@@ -19,11 +19,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 0.62;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 0.87;
                 }
@@ -41,11 +41,11 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (size == Size.Small)
+                if (Size == Size.Small)
                 {
                     return 44;
                 }
-                else if (size == Size.Medium)
+                else if (Size == Size.Medium)
                 {
                     return 88;
                 }
@@ -64,7 +64,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// creates get set of enum Size
         /// </summary>
-        public Size size { get; set; } = Size.Small;
+        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// gets the special instructions on making the Drink
@@ -88,7 +88,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <returns>string "[Size] Aretino Apple Juice"</returns>
         public override string ToString()
         {
-            return ("{0} Aretino Apple Juice", size.ToString()).ToString();
+            return Size.ToString() + " Aretino Apple Juice";
         }
     }
 }

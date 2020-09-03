@@ -13,11 +13,11 @@ namespace BleakwindBuffet.Data.Entrees
     {/// <summary>
      /// Gets the price of the breakfast
      /// </summary>
-        public static double Price => 5.62;
+        public double Price => 5.62;
         /// <summary>
         /// Gets the calories of the breakfast
         /// </summary>
-        public static uint Calories => 602;
+        public uint Calories => 602;
         /// <summary>
         /// gets the special instructions on making the breakfast
         /// </summary>
