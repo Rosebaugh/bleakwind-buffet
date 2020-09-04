@@ -62,6 +62,11 @@ namespace BleakwindBuffet.Data.Sides
         public Size Size { get; set; } = Size.Small;
 
         /// <summary>
+        /// gets the special instructions on making the Fried Miraak
+        /// </summary>
+        public List<string> SpecialInstructions => new List<string>();
+
+        /// <summary>
         /// overrides default returned string
         /// </summary>
         /// <returns>string "[Size] Fried Miraak"</returns>

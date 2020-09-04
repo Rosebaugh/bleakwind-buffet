@@ -7,6 +7,7 @@ using Xunit;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using BleakwindBuffet.Data.Sides;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -15,16 +16,27 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [Fact]
         public void ShouldBeSmallByDefault()
         {
+            DragonbornWaffleFries db = new DragonbornWaffleFries();
+            Assert.Equal(Size.Small, db.Size);
         }
 
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
+            DragonbornWaffleFries db = new DragonbornWaffleFries();
+            db.Size = Size.Large;
+            Assert.Equal(Size.Large, db.Size);
+            db.Size = Size.Medium;
+            Assert.Equal(Size.Medium, db.Size);
+            db.Size = Size.Small;
+            Assert.Equal(Size.Small, db.Size);
         }
 
         [Fact]
         public void ShouldReturnCorrectSpecialInstructions()
         {
+            DragonbornWaffleFries db = new DragonbornWaffleFries();
+            Assert.Empty(db.SpecialInstructions);
         }
 
         [Theory]
@@ -33,6 +45,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 0.96)]
         public void ShouldReturnCorrectPriceBasedOnSize(Size size, double price)
         {
+            DragonbornWaffleFries db = new DragonbornWaffleFries();
+            db.Size = size;
+            Assert.Equal(price, db.Price);
         }
 
         [Theory]
@@ -41,6 +56,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 100)]
         public void ShouldReturnCorrectCaloriesBasedOnSize(Size size, uint calories)
         {
+            DragonbornWaffleFries db = new DragonbornWaffleFries();
+            db.Size = size;
+            Assert.Equal(calories, db.Calories);
         }
 
         [Theory]
@@ -49,6 +67,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, "Large Dragonborn Waffle Fries")]
         public void ShouldReturnCorrectToStringBasedOnSize(Size size, string name)
         {
+            DragonbornWaffleFries db = new DragonbornWaffleFries();
+            db.Size = size;
+            Assert.Equal(name, db.ToString());
         }
     }
 }

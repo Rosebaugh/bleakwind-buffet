@@ -63,6 +63,11 @@ namespace BleakwindBuffet.Data.Sides
         public Size Size { get; set; } = Size.Small;
 
         /// <summary>
+        /// gets the special instructions on making the Vokun Salad
+        /// </summary>
+        public List<string> SpecialInstructions => new List<string>();
+
+        /// <summary>
         /// overrides default returned string
         /// </summary>
         /// <returns>string "[Size] Vokun Salad"</returns>
