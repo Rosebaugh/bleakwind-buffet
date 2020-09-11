@@ -72,7 +72,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// creates get set of bool of weither you want a Cheese or not
         /// </summary>
-        private bool Cheese { get; set; } = true;
+        public bool Cheese { get; set; } = true;
         /// <summary>
         /// overrides default returned string
         /// </summary>
