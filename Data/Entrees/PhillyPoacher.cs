@@ -9,20 +9,20 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class PhillyPoacher
+    public class PhillyPoacher : Entree
     {
         /// <summary>
         /// Gets the price of the Philly cheesesteak sandwich
         /// </summary>
-        public double Price => 7.23;
+        public override double Price => 7.23;
         /// <summary>
         /// Gets the calories of the Philly cheesesteak sandwich
         /// </summary>
-        public uint Calories => 784;
+        public override uint Calories => 784;
         /// <summary>
         /// gets the special instructions on making the Philly cheesesteak sandwich
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

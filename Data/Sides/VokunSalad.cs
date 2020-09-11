@@ -10,13 +10,13 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class VokunSalad
+    public class VokunSalad : Side
     {
 
         /// <summary>
         /// Gets the price of the Side
         /// </summary>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -38,7 +38,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// Gets the calories of the Side
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -57,15 +57,11 @@ namespace BleakwindBuffet.Data.Sides
             }
         }
 
-        /// <summary>
-        /// creates get set of enum Size
-        /// </summary>
-        public Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// gets the special instructions on making the Vokun Salad
         /// </summary>
-        public List<string> SpecialInstructions => new List<string>();
+        public override List<string> SpecialInstructions => new List<string>();
 
         /// <summary>
         /// overrides default returned string

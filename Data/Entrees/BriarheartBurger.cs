@@ -9,20 +9,22 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class BriarheartBurger
+    public class BriarheartBurger : Entree
     {
         /// <summary>
         /// Gets the price of the burger
         /// </summary>
-        public double Price => 6.32;
+        public override double Price => 6.32;
+
         /// <summary>
         /// Gets the calories of the burger
         /// </summary>
-        public uint Calories => 743;
+        public override uint Calories => 743;
+
         /// <summary>
         /// gets the special instructions on making the burger
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
@@ -70,7 +72,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// creates get set of bool of weither you want a Cheese or not
         /// </summary>
-        public bool Cheese { get; set; } = true;
+        private bool Cheese { get; set; } = true;
         /// <summary>
         /// overrides default returned string
         /// </summary>

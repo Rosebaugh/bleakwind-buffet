@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Caleb Rosebaugh
  * Class: CandlehearthCoffeeTests.cs
  * Purpose: Test the CandlehearthCoffee.cs class in the Data library
  */
@@ -13,6 +13,20 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
     public class CandlehearthCoffeeTests
     {
+        [Fact]
+        public void ShouldBeAnIOrderItem()
+        {
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            Assert.IsAssignableFrom<IOrderItem>(cc);
+        }
+
+        [Fact]
+        public void ShouldBeADrink()
+        {
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            Assert.IsAssignableFrom<Drink>(cc);
+        }
+
         [Fact]
         public void ShouldNotIncludeIceByDefault()
         {
