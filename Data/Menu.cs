@@ -18,10 +18,19 @@ namespace BleakwindBuffet.Data
 {
     public static class Menu
     {
+        /// <summary>
+        /// Returns all Entrees, Drinks, and sides
+        /// </summary>
+        /// <returns>list entree, sides then drink in a list</returns>
         public static IEnumerable<IOrderItem> FullMenu()
         {
             return Entrees().Concat(Sides().Concat(Drinks())).ToList();
         }
+
+        /// <summary>
+        /// Makes instances of all entrees, and puts into a list
+        /// </summary>
+        /// <returns>list of all entree</returns>
         public static IEnumerable<IOrderItem> Entrees()
         {
             List<IOrderItem> entrees = new List<IOrderItem>();
@@ -34,6 +43,11 @@ namespace BleakwindBuffet.Data
             entrees.Add(new ThugsTBone());
             return entrees;
         }
+
+        /// <summary>
+        /// Makes instances of all Sides, and puts into a list
+        /// </summary>
+        /// <returns>list of all Sides</returns>
         public static IEnumerable<IOrderItem> Sides()
         {
             List<IOrderItem> sides = new List<IOrderItem>();
@@ -61,6 +75,11 @@ namespace BleakwindBuffet.Data
             return sides;
 
         }
+
+        /// <summary>
+        /// Makes instances of all Drinks, and puts into a list
+        /// </summary>
+        /// <returns>list of all Drinks</returns>
         public static IEnumerable<IOrderItem> Drinks()
         {
             List<IOrderItem> drinks = new List<IOrderItem>();
