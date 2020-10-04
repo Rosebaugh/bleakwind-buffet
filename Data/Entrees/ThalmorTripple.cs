@@ -73,53 +73,224 @@ namespace BleakwindBuffet.Data.Entrees
         }
 
         /// <summary>
-        /// creates get set of bool of weither you want a bun or not
+        /// if user wants bun
         /// </summary>
-        public bool Bun { get; set; } = true;
+        /// <value>Bun</value>
+        private bool bun = true;
 
         /// <summary>
-        /// creates get set of bool of weither you want a Ketchup or not
+        /// creates get set of bool of whether you want a Ice or not
         /// </summary>
-        public bool Ketchup { get; set; } = true;
+        public bool Bun
+        {
+            get
+            {
+                return bun;
+            }
+            set
+            {
+                bun = value; 
+                NotifyPropertyChanged("Bun");
+            }
+        }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Mustard or not
+        /// if user wants Ketchup
         /// </summary>
-        public bool Mustard { get; set; } = true;
-        /// <summary>
-        /// creates get set of bool of weither you want a Pickle or not
-        /// </summary>
-        public bool Pickle { get; set; } = true;
+        /// <value>Ketchup</value>
+        private bool ketchup = true;
 
         /// <summary>
-        /// creates get set of bool of weither you want a Cheese or not
+        /// creates get set of bool of whether you want a Ketchup or not
         /// </summary>
-        public bool Cheese { get; set; } = true;
+        public bool Ketchup
+        {
+            get
+            {
+                return ketchup;
+            }
+            set
+            {
+                ketchup = value;
+                NotifyPropertyChanged("Ketchup");
+            }
+        }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Tomato or not
+        /// if user wants Mustard
         /// </summary>
-        public bool Tomato { get; set; } = true;
+        /// <value>Mustard</value>
+        private bool mustard = true;
 
         /// <summary>
-        /// creates get set of bool of weither you want a Lettuce or not
+        /// creates get set of bool of whether you want a Mustard or not
         /// </summary>
-        public bool Lettuce { get; set; } = true;
+        public bool Mustard
+        {
+            get
+            {
+                return mustard;
+            }
+            set
+            {
+                mustard = value;
+                NotifyPropertyChanged("Mustard");
+            }
+        }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Mayo or not
+        /// if user wants Pickle
         /// </summary>
-        public bool Mayo { get; set; } = true;
+        /// <value>Pickle</value>
+        private bool pickle = true;
 
         /// <summary>
-        /// creates get set of bool of weither you want a Bacon or not
+        /// creates get set of bool of whether you want a Pickle or not
         /// </summary>
-        public bool Bacon { get; set; } = true;
+        public bool Pickle
+        {
+            get
+            {
+                return pickle;
+            }
+            set
+            {
+                pickle = value;
+                NotifyPropertyChanged("Pickle");
+            }
+        }
 
         /// <summary>
-        /// creates get set of bool of weither you want an Egg or not
+        /// if user wants Cheese
         /// </summary>
-        public bool Egg { get; set; } = true;
+        /// <value>Cheese</value>
+        private bool cheese = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Cheese or not
+        /// </summary>
+        public bool Cheese
+        {
+            get
+            {
+                return cheese;
+            }
+            set
+            {
+                cheese = value;
+                NotifyPropertyChanged("Cheese");
+            }
+        }
+
+        /// <summary>
+        /// if user wants Tomato
+        /// </summary>
+        /// <value>Tomato</value>
+        private bool tomato = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Tomato or not
+        /// </summary>
+        public bool Tomato
+        {
+            get
+            {
+                return tomato;
+            }
+            set
+            {
+                tomato = value;
+                NotifyPropertyChanged("Tomato");
+            }
+        }
+
+        /// <summary>
+        /// if user wants Lettuce
+        /// </summary>
+        /// <value>Lettuce</value>
+        private bool lettuce = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Lettuce or not
+        /// </summary>
+        public bool Lettuce
+        {
+            get
+            {
+                return lettuce;
+            }
+            set
+            {
+                lettuce = value;
+                NotifyPropertyChanged("Lettuce");
+            }
+        }
+
+        /// <summary>
+        /// if user wants Mayo
+        /// </summary>
+        /// <value>Mayo</value>
+        private bool mayo = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Mayo or not
+        /// </summary>
+        public bool Mayo
+        {
+            get
+            {
+                return mayo;
+            }
+            set
+            {
+                mayo = value;
+                NotifyPropertyChanged("Mayo");
+            }
+        }
+
+        /// <summary>
+        /// if user wants Bacon
+        /// </summary>
+        /// <value>Bacon</value>
+        private bool bacon = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Bacon or not
+        /// </summary>
+        public bool Bacon
+        {
+            get
+            {
+                return bacon;
+            }
+            set
+            {
+                bacon = value;
+                NotifyPropertyChanged("Bacon");
+            }
+        }
+
+        /// <summary>
+        /// if user wants Egg
+        /// </summary>
+        /// <value>Egg</value>
+        private bool egg = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Egg or not
+        /// </summary>
+        public bool Egg
+        {
+            get
+            {
+                return egg;
+            }
+            set
+            {
+                egg = value;
+                NotifyPropertyChanged("Egg");
+            }
+        }
 
         /// <summary>
         /// overrides default returned string

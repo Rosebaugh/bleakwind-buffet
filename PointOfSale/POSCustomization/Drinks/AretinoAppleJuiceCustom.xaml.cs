@@ -31,11 +31,18 @@ namespace PointOfSale.POSCustomization.Drinks
         public DrinkButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public AretinoAppleJuice Juice;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public AretinoAppleJuiceCustom()
         {
             InitializeComponent();
+            Juice = new AretinoAppleJuice();
+            this.DataContext = Juice;
         }
 
         /// <summary>
@@ -46,19 +53,17 @@ namespace PointOfSale.POSCustomization.Drinks
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            AretinoAppleJuice Cur = new AretinoAppleJuice();
-            Cur.Ice = (bool)Ice.IsChecked;
             if ((bool)Small.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                Juice.Size = BleakwindBuffet.Data.Enums.Size.Small;
             }
             else if ((bool)Medium.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                Juice.Size = BleakwindBuffet.Data.Enums.Size.Medium;
             }
             else if ((bool)Large.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                Juice.Size = BleakwindBuffet.Data.Enums.Size.Large;
             }
             AboveLevel.Done();
         }

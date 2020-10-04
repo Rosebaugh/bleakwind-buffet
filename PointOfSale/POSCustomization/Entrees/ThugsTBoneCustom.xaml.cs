@@ -30,11 +30,18 @@ namespace PointOfSale.POSCustomization.Entrees
         public EntreeButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public ThugsTBone Food;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public ThugsTBoneCustom()
         {
             InitializeComponent();
+            Food = new ThugsTBone();
+            this.DataContext = Food;
         }
 
         /// <summary>
@@ -45,7 +52,6 @@ namespace PointOfSale.POSCustomization.Entrees
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            ThugsTBone Cur = new ThugsTBone();
             AboveLevel.Done();
         }
     }

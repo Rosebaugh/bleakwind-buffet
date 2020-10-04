@@ -31,11 +31,18 @@ namespace PointOfSale.POSCustomization.Drinks
         public DrinkButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public  CandlehearthCoffee Coffee;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public CandlehearthCoffeeCustom()
         {
             InitializeComponent();
+            Coffee = new CandlehearthCoffee();
+            this.DataContext = Coffee;
         }
 
         /// <summary>
@@ -46,21 +53,17 @@ namespace PointOfSale.POSCustomization.Drinks
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            CandlehearthCoffee Cur = new CandlehearthCoffee();
-            Cur.Ice = (bool)Ice.IsChecked;
-            Cur.RoomForCream = (bool)RoomForCream.IsChecked;
-            Cur.Decaf = (bool)Decaf.IsChecked;
             if ((bool)Small.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                Coffee.Size = BleakwindBuffet.Data.Enums.Size.Small;
             }
             else if ((bool)Medium.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                Coffee.Size = BleakwindBuffet.Data.Enums.Size.Medium;
             }
             else if ((bool)Large.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                Coffee.Size = BleakwindBuffet.Data.Enums.Size.Large;
             }
             AboveLevel.Done();
         }

@@ -57,6 +57,30 @@ namespace BleakwindBuffet.Data.Sides
         }
 
         /// <summary>
+        /// size of drink
+        /// </summary>
+        /// <value>size</value>
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// Gets the price of the Drink
+        /// </summary>
+        public override Size Size
+        {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                size = value;
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
+            }
+        }
+
+        /// <summary>
         /// gets the special instructions on making the Mad Otar Grits
         /// </summary>
         public override List<string> SpecialInstructions => new List<string>();

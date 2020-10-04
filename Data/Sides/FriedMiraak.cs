@@ -35,6 +35,30 @@ namespace BleakwindBuffet.Data.Sides
         }
 
         /// <summary>
+        /// size of drink
+        /// </summary>
+        /// <value>size</value>
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// Gets the price of the Drink
+        /// </summary>
+        public override Size Size
+        {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                size = value;
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
+            }
+        }
+
+        /// <summary>
         /// Gets the calories of the Side
         /// </summary>
         public override uint Calories

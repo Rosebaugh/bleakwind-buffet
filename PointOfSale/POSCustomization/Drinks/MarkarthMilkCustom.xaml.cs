@@ -31,11 +31,18 @@ namespace PointOfSale.POSCustomization.Drinks
         public DrinkButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public  MarkarthMilk BoneJuice;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public MarkarthMilkCustom()
         {
             InitializeComponent();
+            BoneJuice = new MarkarthMilk();
+            this.DataContext = BoneJuice;
         }
 
         /// <summary>
@@ -46,19 +53,17 @@ namespace PointOfSale.POSCustomization.Drinks
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            MarkarthMilk Cur = new MarkarthMilk();
-            Cur.Ice = (bool)Ice.IsChecked;
             if ((bool)Small.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                BoneJuice.Size = BleakwindBuffet.Data.Enums.Size.Small;
             }
             else if ((bool)Medium.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                BoneJuice.Size = BleakwindBuffet.Data.Enums.Size.Medium;
             }
             else if ((bool)Large.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                BoneJuice.Size = BleakwindBuffet.Data.Enums.Size.Large;
             }
             AboveLevel.Done();
         }

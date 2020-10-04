@@ -31,11 +31,18 @@ namespace PointOfSale.POSCustomization.Drinks
         public DrinkButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public SailorSoda Soda;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public SailorsSodaCustom()
         {
             InitializeComponent();
+            Soda = new SailorSoda();
+            this.DataContext = Soda;
         }
 
         /// <summary>
@@ -46,45 +53,43 @@ namespace PointOfSale.POSCustomization.Drinks
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            SailorSoda Cur = new SailorSoda();
-            Cur.Ice = (bool)Ice.IsChecked;
             if ((bool)Small.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                Soda.Size = BleakwindBuffet.Data.Enums.Size.Small;
             }
             else if ((bool)Medium.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                Soda.Size = BleakwindBuffet.Data.Enums.Size.Medium;
             }
             else if ((bool)Large.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                Soda.Size = BleakwindBuffet.Data.Enums.Size.Large;
             }
 
 
             if ((bool)Cherry.IsChecked)
             {
-                Cur.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Cherry;
+                Soda.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Cherry;
             }
             else if ((bool)Blackberry.IsChecked)
             {
-                Cur.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Blackberry;
+                Soda.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Blackberry;
             }
             else if ((bool)Grapefruit.IsChecked)
             {
-                Cur.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Grapefruit;
+                Soda.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Grapefruit;
             }
             else if ((bool)Blackberry.IsChecked)
             {
-                Cur.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Lemon;
+                Soda.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Lemon;
             }
             else if ((bool)Grapefruit.IsChecked)
             {
-                Cur.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Peach;
+                Soda.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Peach;
             }
             else if ((bool)Blackberry.IsChecked)
             {
-                Cur.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Watermelon;
+                Soda.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Watermelon;
             }
 
             AboveLevel.Done();

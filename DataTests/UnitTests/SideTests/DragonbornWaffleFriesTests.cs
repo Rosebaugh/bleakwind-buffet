@@ -85,5 +85,68 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             db.Size = size;
             Assert.Equal(name, db.ToString());
         }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var db = new DragonbornWaffleFries();
+
+            Assert.PropertyChanged(db, "Size", () =>
+            {
+                db.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(db, "Size", () =>
+            {
+                db.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(db, "Size", () =>
+            {
+                db.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingPriceNotifiesPriceProperty()
+        {
+            var db = new DragonbornWaffleFries();
+
+            Assert.PropertyChanged(db, "Price", () =>
+            {
+                db.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(db, "Price", () =>
+            {
+                db.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(db, "Price", () =>
+            {
+                db.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingCaloriesNotifiesCaloriesProperty()
+        {
+            var db = new DragonbornWaffleFries();
+
+            Assert.PropertyChanged(db, "Calories", () =>
+            {
+                db.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(db, "Calories", () =>
+            {
+                db.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(db, "Calories", () =>
+            {
+                db.Size = Size.Small;
+            });
+        }
     }
 }

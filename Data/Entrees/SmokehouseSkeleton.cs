@@ -47,23 +47,92 @@ namespace BleakwindBuffet.Data.Entrees
         }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Sausage Link or not
+        /// if user wants Sausage Link
         /// </summary>
-        public bool SausageLink { get; set; } = true;
+        /// <value>Sausage Link</value>
+        private bool sausageLink = true;
 
         /// <summary>
-        /// creates get set of bool of weither you want an Egg or not
+        /// creates get set of bool of whether you want a Sausage Link or not
         /// </summary>
-        public bool Egg { get; set; } = true;
+        public bool SausageLink
+        {
+            get
+            {
+                return sausageLink;
+            }
+            set
+            {
+                sausageLink = value;
+                NotifyPropertyChanged("SausageLink");
+            }
+        }
 
         /// <summary>
-        /// creates get set of bool of weither you want HashBrowns or not
+        /// if user wants Egg
         /// </summary>
-        public bool HashBrowns { get; set; } = true;
+        /// <value>Egg</value>
+        private bool egg = true;
+
         /// <summary>
-        /// creates get set of bool of weither you want a Pancake or not
+        /// creates get set of bool of whether you want a Egg or not
         /// </summary>
-        public bool Pancake { get; set; } = true;
+        public bool Egg
+        {
+            get
+            {
+                return egg;
+            }
+            set
+            {
+                egg = value;
+                NotifyPropertyChanged("Egg");
+            }
+        }
+
+        /// <summary>
+        /// if user wants HashBrowns
+        /// </summary>
+        /// <value>HashBrowns</value>
+        private bool hashBrowns = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a HashBrowns or not
+        /// </summary>
+        public bool HashBrowns
+        {
+            get
+            {
+                return hashBrowns;
+            }
+            set
+            {
+                hashBrowns = value;
+                NotifyPropertyChanged("HashBrowns");
+            }
+        }
+
+        /// <summary>
+        /// if user wants Pancake
+        /// </summary>
+        /// <value>Pancake</value>
+        private bool pancake = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Pancake or not
+        /// </summary>
+        public bool Pancake
+        {
+            get
+            {
+                return pancake;
+            }
+            set
+            {
+                pancake = value;
+                NotifyPropertyChanged("Pancake");
+            }
+        }
 
         /// <summary>
         /// overrides default returned string

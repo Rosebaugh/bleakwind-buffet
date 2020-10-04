@@ -31,11 +31,18 @@ namespace PointOfSale.POSCustomization.Drinks
         public DrinkButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public WarriorWater Agua;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public WarriorWaterCustom()
         {
             InitializeComponent();
+            Agua = new WarriorWater();
+            this.DataContext = Agua;
         }
 
         /// <summary>
@@ -46,19 +53,17 @@ namespace PointOfSale.POSCustomization.Drinks
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            WarriorWater Cur = new WarriorWater();
-            Cur.Ice = (bool)Ice.IsChecked;
             if ((bool)Small.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                Agua.Size = BleakwindBuffet.Data.Enums.Size.Small;
             }
             else if ((bool)Medium.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                Agua.Size = BleakwindBuffet.Data.Enums.Size.Medium;
             }
             else if ((bool)Large.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                Agua.Size = BleakwindBuffet.Data.Enums.Size.Large;
             }
             AboveLevel.Done();
         }

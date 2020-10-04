@@ -41,31 +41,31 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <CheckBox Name ="Bun" Margin="30,0,0,0" IsChecked="True" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Bun" Margin="30,0,0,0" IsChecked="{Binding Path=Bun}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Bun
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Ketchup" Margin="30,0,0,0" IsChecked="True" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Ketchup" Margin="30,0,0,0" IsChecked="{Binding Path=Ketchup}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Ketchup
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Mustard" Margin="30,0,0,0" IsChecked="True" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Mustard" Margin="30,0,0,0" IsChecked="{Binding Path=Mustard}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Mustard
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Pickle" Margin="30,0,0,0" IsChecked="True" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Pickle" Margin="30,0,0,0" IsChecked="{Binding Path=Pickle}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Pickle
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Cheese" Margin="30,0,0,0" IsChecked="True" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Cheese" Margin="30,0,0,0" IsChecked="{Binding Path=Cheese}" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Cheese
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />

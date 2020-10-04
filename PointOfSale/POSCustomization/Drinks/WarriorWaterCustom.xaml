@@ -59,7 +59,7 @@
                         </RadioButton.LayoutTransform>
                     </RadioButton>
                 </DockPanel>
-                <CheckBox Name ="Ice" Margin="30,0,0,0" IsChecked="True" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Ice" Margin="30,0,0,0" IsChecked="{Binding Path=Ice}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Ice
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />

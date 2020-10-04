@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Sides
 {
@@ -14,8 +15,23 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// A base class representing common properties of Sides
     /// </summary>
-    public abstract class Side : IOrderItem
+    public abstract class Side : IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// INotifyPropertyChanged implementation 
+        /// </summary>
+        /// <event>Property Changed</event>
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Property Changed 
+        /// </summary>
+        /// <param name="propertyName"></param>
+        protected virtual void NotifyPropertyChanged(String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         /// <summary>
         /// The size of the Side
         /// </summary>

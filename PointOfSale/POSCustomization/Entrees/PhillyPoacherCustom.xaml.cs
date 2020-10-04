@@ -30,11 +30,18 @@ namespace PointOfSale.POSCustomization.Entrees
         public EntreeButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public PhillyPoacher Food;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public PhillyPoacherCustom()
         {
             InitializeComponent();
+            Food = new PhillyPoacher();
+            this.DataContext = Food;
         }
 
         /// <summary>
@@ -45,10 +52,6 @@ namespace PointOfSale.POSCustomization.Entrees
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            PhillyPoacher Cur = new PhillyPoacher();
-            Cur.Sirloin = (bool)Sirloin.IsChecked;
-            Cur.Onion = (bool)Onion.IsChecked;
-            Cur.Roll = (bool)Roll.IsChecked;
             AboveLevel.Done();
         }
     }

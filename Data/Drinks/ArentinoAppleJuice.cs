@@ -12,6 +12,7 @@ namespace BleakwindBuffet.Data.Drinks
 {
     public class AretinoAppleJuice : Drink
     {
+
         /// <summary>
         /// Gets the price of the Drink
         /// </summary>
@@ -32,7 +33,33 @@ namespace BleakwindBuffet.Data.Drinks
                     return 1.01;
                 }
             }
+
         }
+
+        /// <summary>
+        /// size of drink
+        /// </summary>
+        /// <value>size</value>
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// Gets the price of the Drink
+        /// </summary>
+        public override Size Size
+        {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                size = value;
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
+            }
+        }
+
 
         /// <summary>
         /// Gets the calories of the Drink
@@ -57,9 +84,25 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Ice or not
+        /// if user wants ice
         /// </summary>
-        public bool Ice { get; set; } = false;
+        /// <value>ice</value>
+        private bool ice = false;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Ice or not
+        /// </summary>
+        public bool Ice {
+            get
+            {
+                return ice;
+            }
+            set 
+            {
+                ice = value;
+                NotifyPropertyChanged("Ice");
+            } 
+        }
 
         /// <summary>
         /// gets the special instructions on making the Drink

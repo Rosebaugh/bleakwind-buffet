@@ -85,5 +85,68 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             mog.Size = size;
             Assert.Equal(name, mog.ToString());
         }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var mog = new MadOtarGrits();
+
+            Assert.PropertyChanged(mog, "Size", () =>
+            {
+                mog.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mog, "Size", () =>
+            {
+                mog.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(mog, "Size", () =>
+            {
+                mog.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingPriceNotifiesPriceProperty()
+        {
+            var mog = new MadOtarGrits();
+
+            Assert.PropertyChanged(mog, "Price", () =>
+            {
+                mog.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mog, "Price", () =>
+            {
+                mog.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(mog, "Price", () =>
+            {
+                mog.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingCaloriesNotifiesCaloriesProperty()
+        {
+            var mog = new MadOtarGrits();
+
+            Assert.PropertyChanged(mog, "Calories", () =>
+            {
+                mog.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mog, "Calories", () =>
+            {
+                mog.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(mog, "Calories", () =>
+            {
+                mog.Size = Size.Small;
+            });
+        }
     }
 }

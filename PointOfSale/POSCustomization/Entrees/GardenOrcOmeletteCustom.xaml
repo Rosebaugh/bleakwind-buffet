@@ -40,25 +40,25 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <CheckBox Name ="Broccoli" Margin="30,0,0,0" IsChecked="True" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Broccoli" Margin="30,0,0,0" IsChecked="{Binding Path=Broccoli}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Broccoli
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Mushrooms" Margin="30,0,0,0" IsChecked="True" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Mushrooms" Margin="30,0,0,0" IsChecked="{Binding Path=Mushrooms}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Mushrooms
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Tomato" Margin="30,0,0,0" IsChecked="True" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Tomato" Margin="30,0,0,0" IsChecked="{Binding Path=Tomato}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Tomato
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Cheddar" Margin="30,0,0,0" IsChecked="True" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Cheddar" Margin="30,0,0,0" IsChecked="{Binding Path=Cheddar}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Cheddar
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />

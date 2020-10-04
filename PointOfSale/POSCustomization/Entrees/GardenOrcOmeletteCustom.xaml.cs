@@ -30,11 +30,18 @@ namespace PointOfSale.POSCustomization.Entrees
         public EntreeButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public GardenOrcOmelette Food;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public GardenOrcOmeletteCustom()
         {
             InitializeComponent();
+            Food = new GardenOrcOmelette();
+            this.DataContext = Food;
         }
 
         /// <summary>
@@ -45,11 +52,6 @@ namespace PointOfSale.POSCustomization.Entrees
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            GardenOrcOmelette Cur = new GardenOrcOmelette();
-            Cur.Broccoli = (bool)Broccoli.IsChecked;
-            Cur.Mushrooms = (bool)Mushrooms.IsChecked;
-            Cur.Tomato = (bool)Tomato.IsChecked;
-            Cur.Cheddar = (bool)Cheddar.IsChecked;
             AboveLevel.Done();
         }
     }

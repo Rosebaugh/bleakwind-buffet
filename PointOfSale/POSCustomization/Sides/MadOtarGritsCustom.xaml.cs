@@ -30,11 +30,18 @@ namespace PointOfSale.POSCustomization.Sides
         public SideButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public MadOtarGrits Side;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public MadOtarGritsCustom()
         {
             InitializeComponent();
+            Side = new MadOtarGrits();
+            this.DataContext = Side;
         }
 
         /// <summary>
@@ -45,18 +52,17 @@ namespace PointOfSale.POSCustomization.Sides
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            MadOtarGrits Cur = new MadOtarGrits();
             if ((bool)Small.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                Side.Size = BleakwindBuffet.Data.Enums.Size.Small;
             }
             else if ((bool)Medium.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                Side.Size = BleakwindBuffet.Data.Enums.Size.Medium;
             }
             else if ((bool)Large.IsChecked)
             {
-                Cur.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                Side.Size = BleakwindBuffet.Data.Enums.Size.Large;
             }
             AboveLevel.Done();
         }

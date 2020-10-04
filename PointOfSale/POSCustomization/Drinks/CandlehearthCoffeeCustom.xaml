@@ -61,19 +61,19 @@
                         </RadioButton.LayoutTransform>
                     </RadioButton>
                 </DockPanel>
-                <CheckBox Name ="Ice" Margin="30,0,0,0" IsChecked="False" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Ice" Margin="30,0,0,0"  IsChecked="{Binding Path=Ice}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Ice
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="RoomForCream" Margin="30,0,0,0" IsChecked="False" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="RoomForCream" Margin="30,0,0,0"  IsChecked="{Binding Path=RoomForCream}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Cream
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Decaf" Margin="30,0,0,0" IsChecked="False" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Decaf" Margin="30,0,0,0"  IsChecked="{Binding Path=Decaf}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Decaf
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />

@@ -106,5 +106,84 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             mm.Size = size;
             Assert.Equal(name, mm.ToString());
         }
+
+        [Fact]
+        public void ChangingIceNotifiesIceProperty()
+        {
+            var mm = new MarkarthMilk();
+
+            Assert.PropertyChanged(mm, "Ice", () =>
+            {
+                mm.Ice = true;
+            });
+
+            Assert.PropertyChanged(mm, "Ice", () =>
+            {
+                mm.Ice = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var mm = new MarkarthMilk();
+
+            Assert.PropertyChanged(mm, "Size", () =>
+            {
+                mm.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mm, "Size", () =>
+            {
+                mm.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(mm, "Size", () =>
+            {
+                mm.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingPriceNotifiesPriceProperty()
+        {
+            var mm = new MarkarthMilk();
+
+            Assert.PropertyChanged(mm, "Price", () =>
+            {
+                mm.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mm, "Price", () =>
+            {
+                mm.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(mm, "Price", () =>
+            {
+                mm.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingCaloriesNotifiesCaloriesProperty()
+        {
+            var mm = new MarkarthMilk();
+
+            Assert.PropertyChanged(mm, "Calories", () =>
+            {
+                mm.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mm, "Calories", () =>
+            {
+                mm.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(mm, "Calories", () =>
+            {
+                mm.Size = Size.Small;
+            });
+        }
     }
 }

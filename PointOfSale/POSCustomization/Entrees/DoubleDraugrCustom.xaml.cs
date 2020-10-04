@@ -30,11 +30,18 @@ namespace PointOfSale.POSCustomization.Entrees
         public EntreeButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public DoubleDraugr Food;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public DoubleDraugrCustom()
         {
             InitializeComponent();
+            Food = new DoubleDraugr();
+            this.DataContext = Food;
         }
 
         /// <summary>
@@ -45,15 +52,6 @@ namespace PointOfSale.POSCustomization.Entrees
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            DoubleDraugr Cur = new DoubleDraugr();
-            Cur.Bun = (bool)Bun.IsChecked;
-            Cur.Ketchup = (bool)Ketchup.IsChecked;
-            Cur.Mustard = (bool)Mustard.IsChecked;
-            Cur.Pickle = (bool)Pickle.IsChecked;
-            Cur.Cheese = (bool)Cheese.IsChecked;
-            Cur.Tomato = (bool)Tomato.IsChecked;
-            Cur.Lettuce = (bool)Lettuce.IsChecked;
-            Cur.Mayo = (bool)Mayo.IsChecked;
             AboveLevel.Done();
         }
     }

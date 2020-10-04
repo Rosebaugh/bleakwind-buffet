@@ -11,7 +11,7 @@ using BleakwindBuffet.Data.Enums;
 namespace BleakwindBuffet.Data.Drinks
 {
     public class WarriorWater : Drink
-    {
+    { 
         /// <summary>
         /// Gets the price of the Drink
         /// </summary>
@@ -22,10 +22,52 @@ namespace BleakwindBuffet.Data.Drinks
         /// </summary>
         public override uint Calories => 0;
 
+
         /// <summary>
-        /// creates get set of bool of weither you want a Ice or not
+        /// size of drink
         /// </summary>
-        public bool Ice { get; set; } = true;
+        /// <value>size</value>
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// Gets the price of the Drink
+        /// </summary>
+        public override Size Size
+        {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                size = value;
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
+            }
+        }
+
+        /// <summary>
+        /// if user wants ice
+        /// </summary>
+        /// <value>ice</value>
+        private bool ice = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Ice or not
+        /// </summary>
+        public bool Ice
+        {
+            get
+            {
+                return ice;
+            }
+            set
+            {
+                ice = value;
+                NotifyPropertyChanged("Ice");
+            }
+        }
 
         /// <summary>
         /// gets the special instructions on making the Drink
@@ -48,9 +90,26 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Lemon or not
+        /// if user wants Lemon
         /// </summary>
-        public bool Lemon { get; set; } = false;
+        /// <value>Lemon</value>
+        private bool lemon = false;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Lemon or not
+        /// </summary>
+        public bool Lemon
+        {
+            get
+            {
+                return lemon;
+            }
+            set
+            {
+                lemon = value;
+                NotifyPropertyChanged("Lemon");
+            }
+        }
 
         /// <summary>
         /// overrides default returned string

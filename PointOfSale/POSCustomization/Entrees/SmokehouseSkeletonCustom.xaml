@@ -40,25 +40,25 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <CheckBox Name ="SausageLink" Margin="30,0,0,0" IsChecked="True" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="SausageLink" Margin="30,0,0,0" IsChecked="{Binding Path=SausageLink}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Sausage Link
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Egg" Margin="30,0,0,0" IsChecked="True" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Egg" Margin="30,0,0,0" IsChecked="{Binding Path=Egg}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Egg
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="HashBrowns" Margin="30,0,0,0" IsChecked="True" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="HashBrowns" Margin="30,0,0,0" IsChecked="{Binding Path=HashBrowns}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     HashBrowns
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Pancake" Margin="30,0,0,0" IsChecked="True" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Pancake" Margin="30,0,0,0" IsChecked="{Binding Path=Pancake}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Pancake
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />

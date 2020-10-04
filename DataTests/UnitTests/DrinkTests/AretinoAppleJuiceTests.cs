@@ -105,5 +105,84 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             aj.Size = size;
             Assert.Equal(name, aj.ToString());
         }
+
+        [Fact]
+        public void ChangingIceNotifiesIceProperty()
+        {
+            var AJ = new AretinoAppleJuice();
+
+            Assert.PropertyChanged(AJ, "Ice", () =>
+            {
+                AJ.Ice = true;
+            });
+
+            Assert.PropertyChanged(AJ, "Ice", () =>
+            {
+                AJ.Ice = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var AJ = new AretinoAppleJuice();
+
+            Assert.PropertyChanged(AJ, "Size", () =>
+            {
+                AJ.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(AJ, "Size", () =>
+            {
+                AJ.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(AJ, "Size", () =>
+            {
+                AJ.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingPriceNotifiesPriceProperty()
+        {
+            var AJ = new AretinoAppleJuice();
+
+            Assert.PropertyChanged(AJ, "Price", () =>
+            {
+                AJ.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(AJ, "Price", () =>
+            {
+                AJ.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(AJ, "Price", () =>
+            {
+                AJ.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingCaloriesNotifiesCaloriesProperty()
+        {
+            var AJ = new AretinoAppleJuice();
+
+            Assert.PropertyChanged(AJ, "Calories", () =>
+            {
+                AJ.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(AJ, "Calories", () =>
+            {
+                AJ.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(AJ, "Calories", () =>
+            {
+                AJ.Size = Size.Small;
+            });
+        }
     }
 }

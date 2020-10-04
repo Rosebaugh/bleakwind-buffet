@@ -10,6 +10,21 @@
         <TextBlock DockPanel.Dock="Top" FontWeight="Bold" TextAlignment="Center" FontSize="17">
             Order #
         </TextBlock>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="40"/>
+            </Grid.RowDefinitions>
+            <Button FontWeight="Bold" FontSize="11" Grid.Column="0">
+                Cancel Order
+            </Button>
+            <Button FontWeight="Bold" FontSize="11" Grid.Column="1">
+                Finish Order
+            </Button>
+        </Grid>
         <TextBlock DockPanel.Dock="Bottom" FontWeight="Bold" TextAlignment="Center" FontSize="17">
             Subtotal: $0.00
         </TextBlock>

@@ -30,11 +30,18 @@ namespace PointOfSale.POSCustomization.Entrees
         public EntreeButtons AboveLevel { get; set; }
 
         /// <summary>
+        /// Instance of the Item
+        /// </summary>
+        public SmokehouseSkeleton Food;
+
+        /// <summary>
         /// initializes customization WPF
         /// </summary>
         public SmokehouseSkeletonCustom()
         {
             InitializeComponent();
+            Food = new SmokehouseSkeleton();
+            this.DataContext = Food;
         }
 
         /// <summary>
@@ -45,11 +52,6 @@ namespace PointOfSale.POSCustomization.Entrees
         /// <param name="e"> event </param>
         void DoneClick(object sender, RoutedEventArgs e)
         {
-            SmokehouseSkeleton Cur = new SmokehouseSkeleton();
-            Cur.SausageLink = (bool)SausageLink.IsChecked;
-            Cur.Egg = (bool)Egg.IsChecked;
-            Cur.HashBrowns = (bool)HashBrowns.IsChecked;
-            Cur.Pancake = (bool)Pancake.IsChecked;
             AboveLevel.Done();
         }
     }

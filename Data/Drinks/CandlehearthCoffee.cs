@@ -12,6 +12,7 @@ namespace BleakwindBuffet.Data.Drinks
 {
     public class CandlehearthCoffee : Drink
     {
+
         /// <summary>
         /// Gets the price of the Drink
         /// </summary>
@@ -31,6 +32,29 @@ namespace BleakwindBuffet.Data.Drinks
                 {
                     return 1.75;
                 }
+            }
+        }
+        /// <summary>
+        /// size of drink
+        /// </summary>
+        /// <value>size</value>
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// Gets the price of the Drink
+        /// </summary>
+        public override Size Size
+        {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                size = value;
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
             }
         }
 
@@ -57,9 +81,26 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Ice or not
+        /// if user wants ice
         /// </summary>
-        public bool Ice { get; set; } = false;
+        /// <value>ice</value>
+        private bool ice = false;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Ice or not
+        /// </summary>
+        public bool Ice
+        {
+            get
+            {
+                return ice;
+            }
+            set
+            {
+                ice = value;
+                NotifyPropertyChanged("Ice");
+            }
+        }
 
         /// <summary>
         /// gets the special instructions on making the Drink
@@ -82,14 +123,48 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Cream or not
+        /// if user wants Cream
         /// </summary>
-        public bool RoomForCream { get; set; } = false;
+        /// <value>Cream</value>
+        private bool roomForCream = false;
 
         /// <summary>
-        /// creates get set of bool of weither you want a Decaf or not
+        /// creates get set of bool of whether you want a Cream or not
         /// </summary>
-        public bool Decaf { get; set; } = false;
+        public bool RoomForCream
+        {
+            get
+            {
+                return roomForCream;
+            }
+            set
+            {
+                roomForCream = value;
+                NotifyPropertyChanged("RoomForCream");
+            }
+        }
+
+        /// <summary>
+        /// if user wants Lemon
+        /// </summary>
+        /// <value>Decaf</value>
+        private bool decaf = false;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Decaf or not
+        /// </summary>
+        public bool Decaf
+        {
+            get
+            {
+                return decaf;
+            }
+            set
+            {
+                decaf = value;
+                NotifyPropertyChanged("Decaf");
+            }
+        }
 
         /// <summary>
         /// overrides default returned string

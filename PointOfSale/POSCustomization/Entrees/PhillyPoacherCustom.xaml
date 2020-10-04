@@ -39,19 +39,19 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <CheckBox Name ="Sirloin" Margin="30,0,0,0" IsChecked="True" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Sirloin" Margin="30,0,0,0" IsChecked="{Binding Path=Sirloin}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Sirloin
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Onion" Margin="30,0,0,0" IsChecked="True" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Onion" Margin="30,0,0,0" IsChecked="{Binding Path=Onion}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Onion
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
                 </CheckBox>
-                <CheckBox Name ="Roll" Margin="30,0,0,0" IsChecked="True" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
+                <CheckBox Name ="Roll" Margin="30,0,0,0" IsChecked="{Binding Path=Roll}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Roll
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />

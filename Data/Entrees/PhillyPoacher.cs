@@ -44,19 +44,70 @@ namespace BleakwindBuffet.Data.Entrees
         }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Sirloin or not
+        /// if user wants Sirloin
         /// </summary>
-        public bool Sirloin { get; set; } = true;
+        /// <value>Sirloin</value>
+        private bool sirloin = true;
 
         /// <summary>
-        /// creates get set of bool of weither you want a Onion or not
+        /// creates get set of bool of whether you want a Sirloin or not
         /// </summary>
-        public bool Onion { get; set; } = true;
+        public bool Sirloin
+        {
+            get
+            {
+                return sirloin;
+            }
+            set
+            {
+                sirloin = value;
+                NotifyPropertyChanged("Sirloin");
+            }
+        }
 
         /// <summary>
-        /// creates get set of bool of weither you want a Roll or not
+        /// if user wants Onion
         /// </summary>
-        public bool Roll { get; set; } = true;
+        /// <value>Onion</value>
+        private bool onion = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Onion or not
+        /// </summary>
+        public bool Onion
+        {
+            get
+            {
+                return onion;
+            }
+            set
+            {
+                onion = value;
+                NotifyPropertyChanged("Onion");
+            }
+        }
+
+        /// <summary>
+        /// if user wants Roll
+        /// </summary>
+        /// <value>Roll</value>
+        private bool roll = true;
+
+        /// <summary>
+        /// creates get set of bool of whether you want a Roll or not
+        /// </summary>
+        public bool Roll
+        {
+            get
+            {
+                return roll;
+            }
+            set
+            {
+                roll = value;
+                NotifyPropertyChanged("Roll");
+            }
+        }
 
         /// <summary>
         /// overrides default returned string
