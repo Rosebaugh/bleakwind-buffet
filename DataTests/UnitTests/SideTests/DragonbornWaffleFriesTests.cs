@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -147,6 +148,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             {
                 db.Size = Size.Small;
             });
+        }
+
+        [Fact]
+        public void ImplementsINotifyPropertyChangedInterface()
+        {
+            var db = new DragonbornWaffleFries();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(db);
         }
     }
 }

@@ -46,26 +46,25 @@ namespace PointOfSale.POSCustomization.Drinks
         }
 
         /// <summary>
-        /// Creates the apropriate IOrderItem and populates it (for future use)
+        /// Creates the apropriate IOrderItem and populates it
         /// Passes click event afterwards to DrinkButtons.xaml
         /// </summary>
         /// <param name="sender"> button object</param>
         /// <param name="e"> event </param>
-        void DoneClick(object sender, RoutedEventArgs e)
+        public void DoneClick(object sender, RoutedEventArgs e)
         {
-            if ((bool)Small.IsChecked)
-            {
-                Agua.Size = BleakwindBuffet.Data.Enums.Size.Small;
-            }
-            else if ((bool)Medium.IsChecked)
-            {
-                Agua.Size = BleakwindBuffet.Data.Enums.Size.Medium;
-            }
-            else if ((bool)Large.IsChecked)
-            {
-                Agua.Size = BleakwindBuffet.Data.Enums.Size.Large;
-            }
-            AboveLevel.Done();
+            AboveLevel.Done(Agua);
+        }
+
+        /// <summary>
+        /// Grabs the apropriate IOrderItem and removes it
+        /// Passes click event afterwards to EntreeButtons.xaml
+        /// </summary>
+        /// <param name="sender"> button object</param>
+        /// <param name="e"> event </param>
+        public void CancelItem(object sender, RoutedEventArgs e)
+        {
+            AboveLevel.Cancel(Agua);
         }
     }
 }

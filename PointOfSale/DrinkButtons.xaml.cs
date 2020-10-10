@@ -3,6 +3,7 @@
  * Class name: DrinkButtons.xaml.cs
  * Purpose: Class used to create WPF.
  */
+using BleakwindBuffet.Data;
 using PointOfSale.POSCustomization.Drinks;
 using System;
 using System.Collections.Generic;
@@ -135,10 +136,17 @@ namespace PointOfSale
         /// <summary>
         /// When The customize screens "done" button gets clicked, redirected to here
         /// </summary>
-        public void Done()
+        public void Done(IOrderItem that)
         {
-            Win.ChangeLayerIndex(-1);
-            Win.BackButtonClick(new object(), new RoutedEventArgs());
+            Win.AddItem(that);
+        }
+
+        /// <summary>
+        /// When The customize screens "Cancel" button gets clicked, redirected to here
+        /// </summary>
+        public void Cancel(IOrderItem that)
+        {
+            Win.CancelItem(that);
         }
     }
 }

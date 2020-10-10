@@ -1,8 +1,4 @@
-﻿/*
- * Author: Caleb Rosebaugh
- * Class name: MenuChoice.xaml.cs
- * Purpose: Class used to create WPF user control.
- */
+﻿using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,9 +15,9 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for MenuChoice.xaml
+    /// Interaction logic for ComboButtons.xaml
     /// </summary>
-    public partial class MenuChoice : UserControl
+    public partial class ComboButtons : UserControl
     {
         /// <summary>
         /// Holds reference to MainWindow.xaml
@@ -29,11 +25,18 @@ namespace PointOfSale
         public MainWindow Win { get; set; }
 
         /// <summary>
-        /// Initializes MenuChoice
+        /// Instance of the Combo
         /// </summary>
-        public MenuChoice()
+        public ComboMeal meal;
+
+        /// <summary>
+        /// Initializes ComboButtons
+        /// </summary>
+        public ComboButtons()
         {
             InitializeComponent();
+            meal = new ComboMeal();
+            this.DataContext = meal;
         }
 
         /// <summary>
@@ -67,13 +70,23 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// Redirects Click  Event to MainWindow.xaml
+        /// When The customize screens "done" button gets clicked, redirected to here
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void ComboButtonClick(object sender, RoutedEventArgs e)
+        public void Done(object sender, RoutedEventArgs e)
         {
-            Win.Combo();
+            Win.isCombo = false;
+            Win.AddItem(meal);
+        }
+
+        /// <summary>
+        /// Grabs the apropriate IOrderItem and removes it
+        /// Passes click event afterwards to EntreeButtons.xaml
+        /// </summary>
+        /// <param name="sender"> button object</param>
+        /// <param name="e"> event </param>
+        public void CancelItem(object sender, RoutedEventArgs e)
+        {
+            Win.CancelItem(meal);
         }
     }
 }

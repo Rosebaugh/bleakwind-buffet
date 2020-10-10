@@ -11,12 +11,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Border Margin="30,5,30,0" Background="#FFC97700" Grid.Row="0"/>
         <Button Margin="30,15" Click="EntreeButtonClick" Background="#FF50D662" Foreground="Black" FontSize="20" Grid.Row="1">
@@ -28,7 +28,9 @@
         <Button Margin="30,15" Click="DrinksButtonClick" Background="#FFFFF972" Foreground="Black" FontSize="20" Grid.Row="3">
             Drinks
         </Button>
-        <Border Margin="30,0" Background="#FF915600" Grid.Row="4"/>
+        <Button Margin="30,10" Click="ComboButtonClick" Background="#FF915600" Foreground="Black" FontSize="20" Grid.Row="4">
+            Combo
+        </Button>
         <Border Margin="30,10,30,5" Background="#FFC97700" Grid.Row="5"/>
         
     </Grid>

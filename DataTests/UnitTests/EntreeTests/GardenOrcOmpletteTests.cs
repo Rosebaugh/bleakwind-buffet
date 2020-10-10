@@ -7,6 +7,7 @@ using Xunit;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -198,6 +199,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             {
                 goo.Cheddar = true;
             });
+        }
+
+        [Fact]
+        public void ImplementsINotifyPropertyChangedInterface()
+        {
+            var goo = new GardenOrcOmelette();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(goo);
         }
     }
 }

@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="200">
     <DockPanel>
         <TextBlock DockPanel.Dock="Top" FontWeight="Bold" TextAlignment="Center" FontSize="17">
-            Order #
+            Order #<TextBlock x:Name="OrderNumber"/>
         </TextBlock>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
@@ -18,33 +18,53 @@
             <Grid.RowDefinitions>
                 <RowDefinition MinHeight="40"/>
             </Grid.RowDefinitions>
-            <Button FontWeight="Bold" FontSize="11" Grid.Column="0">
+            <Button Click="Cancel" FontWeight="Bold" FontSize="11" Grid.Column="0">
                 Cancel Order
             </Button>
-            <Button FontWeight="Bold" FontSize="11" Grid.Column="1">
+            <Button Click="Finish" FontWeight="Bold" FontSize="11" Grid.Column="1">
                 Finish Order
             </Button>
         </Grid>
         <TextBlock DockPanel.Dock="Bottom" FontWeight="Bold" TextAlignment="Center" FontSize="17">
-            Subtotal: $0.00
+            Total: $<TextBlock Text="{Binding Path=Total}"/>
         </TextBlock>
         <TextBlock DockPanel.Dock="Bottom" FontWeight="Bold" TextAlignment="Center" FontSize="17">
-            Tax: $0.00
+            Tax: $<TextBlock Text="{Binding Path=Tax}"/>
         </TextBlock>
         <TextBlock DockPanel.Dock="Bottom" FontWeight="Bold" TextAlignment="Center" FontSize="17">
-            Total: $0.00
+            Subtotal: $<TextBlock Text="{Binding Path=Subtotal}"/>
         </TextBlock>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="58"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListView Name="itemsListView" FontSize="15" BorderBrush="Transparent">
-            </ListView>
-            <ListView Name="priceListView" FontSize="15"  BorderBrush="Transparent" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView Name="itemsListView"  SelectionChanged="listBox_SelectedIndexChanged" FontSize="10" ItemsSource="{Binding}" BorderBrush="Transparent" IsSynchronizedWithCurrentItem="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0">
+
+                                <TextBlock Width="95" Text="{Binding}" TextAlignment="Left" FontSize="12" HorizontalAlignment="left" TextWrapping ="Wrap" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                                <ListView ItemsSource="{Binding Path=SpecialInstructions}" FontSize="10" BorderBrush="Transparent">
+
+                                </ListView>
+                            </StackPanel>
+                            <TextBlock Margin="30,0,0,0" Grid.Column="1" FontSize="20"  TextAlignment="Right" HorizontalAlignment="Right" >
+                                $<TextBlock Text="{Binding Path=Price}"  Name="priceListView" TextAlignment="Right" FontSize="20"/>
+                            </TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </Grid>
     </DockPanel>

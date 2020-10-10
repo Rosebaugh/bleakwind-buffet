@@ -1,7 +1,7 @@
 ﻿/*
  * Author: Caleb Rosebaugh
  * Class: MenuTests.cs
- * Purpose: Test the CandlehearthCoffee.cs class in the Data library
+ * Purpose: Test the MenuTests.cs class in the Data library
  */
 using Xunit;
 

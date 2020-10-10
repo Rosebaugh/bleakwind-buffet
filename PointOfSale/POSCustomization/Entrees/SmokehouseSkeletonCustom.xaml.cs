@@ -45,14 +45,25 @@ namespace PointOfSale.POSCustomization.Entrees
         }
 
         /// <summary>
-        /// Creates the apropriate IOrderItem and populates it (for future use)
+        /// Creates the apropriate IOrderItem and populates it
         /// Passes click event afterwards to EntreeButtons.xaml
         /// </summary>
         /// <param name="sender"> button object</param>
         /// <param name="e"> event </param>
-        void DoneClick(object sender, RoutedEventArgs e)
+        public void DoneClick(object sender, RoutedEventArgs e)
         {
-            AboveLevel.Done();
+            AboveLevel.Done(Food);
+        }
+
+        /// <summary>
+        /// Grabs the apropriate IOrderItem and removes it
+        /// Passes click event afterwards to EntreeButtons.xaml
+        /// </summary>
+        /// <param name="sender"> button object</param>
+        /// <param name="e"> event </param>
+        public void CancelItem(object sender, RoutedEventArgs e)
+        {
+            AboveLevel.Cancel(Food);
         }
     }
 }

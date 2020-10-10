@@ -4,8 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale.POSCustomization.Drinks"
+             xmlns:far="clr-namespace:BleakwindBuffet.Data.Enums;assembly=Data"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="Sizes" ObjectType="{x:Type system:Enum}" MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="far:Size"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <RadioButton Content="{TemplateBinding ContentPresenter.Content}" IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -38,27 +56,12 @@
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <DockPanel VerticalAlignment="Center">
 
-                    <RadioButton Name ="Small" Margin="30,0,0,0" IsChecked="True" Grid.Row="0" HorizontalAlignment="Left" DockPanel.Dock="Top" FontSize="14">
-                        Small
-                        <RadioButton.LayoutTransform>
-                            <ScaleTransform ScaleX="2" ScaleY="2" />
-                        </RadioButton.LayoutTransform>
-                    </RadioButton>
-                    <RadioButton Name ="Medium" Margin="30,0,0,0" HorizontalAlignment="Left"  DockPanel.Dock="Top" FontSize="14">
-                        Medium
-                        <RadioButton.LayoutTransform>
-                            <ScaleTransform ScaleX="2" ScaleY="2" />
-                        </RadioButton.LayoutTransform>
-                    </RadioButton>
-                    <RadioButton Name ="Large" Margin="30,0,0,0" HorizontalAlignment="Left"  DockPanel.Dock="Top" FontSize="14">
-                        Large
-                        <RadioButton.LayoutTransform>
-                            <ScaleTransform ScaleX="2" ScaleY="2" />
-                        </RadioButton.LayoutTransform>
-                    </RadioButton>
-                </DockPanel>
+                <ListBox ItemsSource="{Binding Source = {StaticResource Sizes}}" SelectedItem="{Binding Path=Size}" VerticalAlignment="Center" BorderBrush="Transparent">
+                    <ListBox.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                    </ListBox.LayoutTransform>
+                </ListBox>
                 <CheckBox Name ="Ice" Margin="30,0,0,0" IsChecked="{Binding Path=Ice}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
                     Ice
                     <CheckBox.LayoutTransform>

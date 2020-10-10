@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="PointOfSale.ComboButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button Margin="30,15" Click="EntreeButtonClick" Background="#FF50D662" Foreground="Black" FontSize="20" Grid.Row="0">
+            Entree
+        </Button>
+        <Button Margin="30,15" Click="SidesButtonClick" Background="#FFFF6A6A" Foreground="Black" FontSize="20" Grid.Row="1">
+            Sides
+        </Button>
+        <Button Margin="30,15" Click="DrinksButtonClick" Background="#FFFFF972" Foreground="Black" FontSize="20" Grid.Row="2">
+            Drinks
+        </Button>
+        <Button x:Name="AddToOrder" Margin="30,0, 30, 5" Click="Done" Foreground="Black" FontSize="20" Grid.Row="3" Grid.ColumnSpan="2">
+            Add to Order
+        </Button>
+        <TextBlock Text="{Binding Path=Entree}" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap"/>
+        <TextBlock Text="{Binding Path=Side}" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
+        <TextBlock Text="{Binding Path=Drink}" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap"/>
+    </Grid>
+</UserControl>
