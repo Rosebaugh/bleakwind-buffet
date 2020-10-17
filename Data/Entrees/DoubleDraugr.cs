@@ -249,6 +249,15 @@ namespace BleakwindBuffet.Data.Entrees
         }
 
         /// <summary>
+        /// return ToString
+        /// </summary>
+        /// <returns>string "[Size] Aretino Apple Juice"</returns>
+        public string Name
+        {
+            get => ToString();
+        }
+
+        /// <summary>
         /// overrides default returned string
         /// </summary>
         /// <returns>string "Double Draugr" </returns>

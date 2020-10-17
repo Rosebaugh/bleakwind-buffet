@@ -1,4 +1,9 @@
-﻿using BleakwindBuffet.Data;
+﻿/*
+ * Author: Caleb Rosebaugh
+ * Class name: ComboAlterButtons.xaml.cs
+ * Purpose: Class used to create WPF user control.
+ */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data.Sides;

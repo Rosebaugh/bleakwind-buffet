@@ -1,4 +1,9 @@
-﻿using BleakwindBuffet.Data;
+﻿/*
+ * Author: Caleb Rosebaugh
+ * Class name: ComboButtons.xaml.cs
+ * Purpose: Class used to create WPF user control.
+ */
+using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;

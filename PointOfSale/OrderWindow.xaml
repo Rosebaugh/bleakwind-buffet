@@ -54,7 +54,7 @@
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Column="0">
 
-                                <TextBlock Width="95" Text="{Binding}" TextAlignment="Left" FontSize="12" HorizontalAlignment="left" TextWrapping ="Wrap" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                                <TextBlock Width="95" Text="{Binding Path=Name}" TextAlignment="Left" FontSize="12" HorizontalAlignment="left" TextWrapping ="Wrap" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
                                 <ListView ItemsSource="{Binding Path=SpecialInstructions}" FontSize="10" BorderBrush="Transparent">
 
                                 </ListView>

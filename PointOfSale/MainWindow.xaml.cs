@@ -68,9 +68,14 @@ namespace PointOfSale
         public ComboAlterButtons CombAlt { get; set; }
 
         /// <summary>
+        /// ComboAlterButtons shown after clicking on Combo on list
+        /// </summary>
+        public FinishOrder FinalizeOrder { get; set; }
+
+        /// <summary>
         /// Index of which menu you are in
         /// </summary>
-        /// <value>0 = Top Menu, 1 = Entree, 2 = Sides, 3 = Drinks</value>
+        /// <value>0 = Top Menu, 1 = Entree, 2 = Sides, 3 = Drinks, 4 = combo</value>
         public int Menu = 0;
 
         /// <summary>
@@ -78,6 +83,11 @@ namespace PointOfSale
         /// </summary>
         /// <value> 0 = top, 1 = Entree, Sides, or Drinks, 2 = Item Customization screen</value>
         public int LayerIndex = 0;
+
+        /// <summary>
+        /// bool of if PaymentScreen is on or not
+        /// </summary>
+        public bool PaymentScreen = false;
 
         /// <summary>
         /// bool of if customizing a combo item
@@ -187,7 +197,19 @@ namespace PointOfSale
         /// <param name="e"> Event </param>
         public void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            if (OrderItem)
+            if (PaymentScreen)
+            {
+                if(LayerIndex == 1)
+                {
+                    Reset();
+                }
+                else if(LayerIndex == 2)
+                {
+                    FinalizeOrder.temp.BackOutOfCash();
+                    Finish();
+                }
+            }
+            else if (OrderItem)
             {
                 OrderItem = false;
                 LayerIndex--;
@@ -571,12 +593,20 @@ namespace PointOfSale
         /// adds order to list of orders
         /// resets screen for new order
         /// </summary>
-        /// <param name="thing"> order </param>
-        public void Finish(Order thing)
+        public void Finish()
         {
-            if (Orders == null) Orders = new List<Order>();
-            Orders.Add(thing);
-            NewOrder();
+            PaymentScreen = true;
+            OrderItem = false;
+            isCombo = false;
+            LayerIndex = 1;
+            Back.IsEnabled = true;
+            Right.UnselectItem();
+
+            FinalizeOrder = new FinishOrder();
+            FinalizeOrder.Win = this;
+            FinalizeOrder.price = Right.price;
+            containerBorder.Child = null;
+            containerBorder.Child = FinalizeOrder;
         }
 
         /// <summary>
@@ -584,6 +614,12 @@ namespace PointOfSale
         /// </summary>
         public void NewOrder()
         {
+            if (Orders == null)
+            {
+                Orders = new List<Order>();
+            }
+            Orders.Add(Right.price);
+            Right.Cancel(null, new RoutedEventArgs());
             Reset();
         }
 
@@ -592,12 +628,17 @@ namespace PointOfSale
         /// </summary>
         public void Reset()
         {
+            if (PaymentScreen && LayerIndex == 2)
+            {
+                FinalizeOrder.temp.BackOutOfCash();
+            }
             LayerIndex = 0;
             Back.IsEnabled = false;
             containerBorder.Child = Topie;
             Menu = 0;
             OrderItem = false;
             isCombo = false;
+            PaymentScreen = false;
             Right.UnselectItem();
         }
     }

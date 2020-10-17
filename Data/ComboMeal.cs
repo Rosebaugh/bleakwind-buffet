@@ -1,9 +1,15 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿/*
+ * Author: Caleb Rosebaugh
+ * Class: ComboMeal.cs
+ * Purpose: Create item for a saled item pack
+ */
+using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 
@@ -27,6 +33,16 @@ namespace BleakwindBuffet.Data
         }
 
         /// <summary>
+        /// initializes comboMeal
+        /// </summary>
+        public ComboMeal()
+        {
+            entree.PropertyChanged += eventListener;
+            side.PropertyChanged += eventListener;
+            drink.PropertyChanged += eventListener;
+        }
+
+        /// <summary>
         /// Entree in combo
         /// </summary>
         private Entree entree = new BriarheartBurger();
@@ -42,6 +58,31 @@ namespace BleakwindBuffet.Data
         private Drink drink = new SailorSoda();
 
         /// <summary>
+        /// event listener for Changing names, calories, special instruction, and prices
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void eventListener(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Price")
+            {
+                NotifyPropertyChanged("Price");
+            }
+            if (e.PropertyName == "Calories")
+            {
+                NotifyPropertyChanged("Calories");
+            }
+            if (e.PropertyName == "SpecialInstructions")
+            {
+                NotifyPropertyChanged("SpecialInstructions");
+            }
+            if (e.PropertyName == "Name")
+            {
+                NotifyPropertyChanged("Name");
+            }
+        }
+
+        /// <summary>
         /// gets and sets Entree
         /// </summary>
         public Entree Entree
@@ -52,11 +93,14 @@ namespace BleakwindBuffet.Data
             }
             set
             {
+                entree.PropertyChanged -= eventListener;
                 entree = value;
+                entree.PropertyChanged += eventListener;
                 NotifyPropertyChanged("Entree");
                 NotifyPropertyChanged("Price");
                 NotifyPropertyChanged("Calories");
                 NotifyPropertyChanged("SpecialInstructions");
+                NotifyPropertyChanged("Name");
             }
         }
 
@@ -71,11 +115,14 @@ namespace BleakwindBuffet.Data
             }
             set
             {
+                side.PropertyChanged -= eventListener;
                 side = value;
-                NotifyPropertyChanged("Side");
+                side.PropertyChanged += eventListener;
+                NotifyPropertyChanged("Entree");
                 NotifyPropertyChanged("Price");
                 NotifyPropertyChanged("Calories");
                 NotifyPropertyChanged("SpecialInstructions");
+                NotifyPropertyChanged("Name");
             }
         }
 
@@ -90,11 +137,14 @@ namespace BleakwindBuffet.Data
             }
             set
             {
+                drink.PropertyChanged -= eventListener;
                 drink = value;
-                NotifyPropertyChanged("Drink");
+                drink.PropertyChanged += eventListener;
+                NotifyPropertyChanged("Entree");
                 NotifyPropertyChanged("Price");
                 NotifyPropertyChanged("Calories");
                 NotifyPropertyChanged("SpecialInstructions");
+                NotifyPropertyChanged("Name");
             }
         }
 
@@ -127,14 +177,24 @@ namespace BleakwindBuffet.Data
         {
             get
             {
-                List<string> e = new List<string>();
+                return (entree.SpecialInstructions).Concat((side.SpecialInstructions).Concat((drink.SpecialInstructions))).ToList();
+                //List<string> e = new List<string>();
                 //e.Add(entree.ToString());
-                List<string> s = new List<string>();
+                //List<string> s = new List<string>();
                 //s.Add(side.ToString());
-                List<string> d = new List<string>();
+                //List<string> d = new List<string>();
                 //d.Add(drink.ToString());
-                return e.Concat((entree.SpecialInstructions).Concat(s.Concat((side.SpecialInstructions).Concat(d.Concat((drink.SpecialInstructions)))))).ToList();
+                //return e.Concat((entree.SpecialInstructions).Concat(s.Concat((side.SpecialInstructions).Concat(d.Concat((drink.SpecialInstructions)))))).ToList();
             }
+        }
+
+        /// <summary>
+        /// return ToString
+        /// </summary>
+        /// <returns>string "[Size] Aretino Apple Juice"</returns>
+        public string Name
+        {
+            get => ToString();
         }
 
         /// <summary>

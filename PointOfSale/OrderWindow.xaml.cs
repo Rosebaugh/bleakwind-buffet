@@ -52,6 +52,7 @@ namespace PointOfSale
             this.DataContext = price;
             itemsListView.DataContext = price; //was Order
             Number = 1;
+            price.OrderNumber = Number;
             OrderNumber.Text = Number.ToString();
         }
 
@@ -104,10 +105,22 @@ namespace PointOfSale
         /// <param name="e">event</param>
         public void Cancel(object sender, RoutedEventArgs e)
         {
-            price = new Order();
-            this.DataContext = price;
-            itemsListView.DataContext = price; //was Order
-            Win.Reset();
+            if(sender != null)
+            {
+                price = new Order();
+                this.DataContext = price;
+                itemsListView.DataContext = price; //was Order
+                Win.Reset();
+            }
+            else
+            {
+                Number++;
+                price = new Order();
+                price.OrderNumber = Number;
+                OrderNumber.Text = Number.ToString();
+                this.DataContext = price;
+                itemsListView.DataContext = price; //was Order
+            }
         }
 
         /// <summary>
@@ -119,10 +132,12 @@ namespace PointOfSale
         {
             if(price.Count != 0)
             {
-                Number++;
+                //Number++;
+                //price.OrderNumber = Number;
                 OrderNumber.Text = Number.ToString();
-                Win.Finish(price);
-                Cancel(sender, e);
+                Win.Finish();
+                //Win.Finish(price);
+                //Cancel(sender, e);
             }
         }
     }

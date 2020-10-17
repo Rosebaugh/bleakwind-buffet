@@ -7,7 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Currency.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Currency.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RoundRegister">
+      <HintPath>RoundRegister.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CurrencyScreen\" />
   </ItemGroup>
 
 </Project>

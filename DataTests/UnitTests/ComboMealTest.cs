@@ -416,43 +416,6 @@ namespace BleakwindBuffet.DataTests.UnitTests
         }
 
         [Fact]
-        public void ChangingSideNotifiesSideProperty()
-        {
-            var combo = new ComboMeal();
-
-            for (int j = 0; j < 4; j++)
-            {
-                Side jItem = new DragonbornWaffleFries();
-                switch (j)
-                {
-                    case 0:
-                        jItem = new DragonbornWaffleFries();
-                        break;
-                    case 1:
-                        jItem = new FriedMiraak();
-                        break;
-                    case 2:
-                        jItem = new MadOtarGrits();
-                        break;
-                    case 3:
-                        jItem = new VokunSalad();
-                        break;
-
-                }
-                foreach (Size s in (Size[])Enum.GetValues(typeof(Size)))
-                {
-                    jItem.Size = s;
-
-                    Assert.PropertyChanged(combo, "Side", () =>
-                    {
-                        combo.Side = jItem;
-                    });
-                }
-            }
-        }
-
-
-        [Fact]
         public void ChangingDrinkNotifiesCaloriesProperty()
         {
             var combo = new ComboMeal();
@@ -610,60 +573,6 @@ namespace BleakwindBuffet.DataTests.UnitTests
                 }
             }
         }
-
-        [Fact]
-        public void ChangingDrinkNotifiesDrinkProperty()
-        {
-            var combo = new ComboMeal();
-
-            for (int k = 0; k < 5; k++)
-            {
-                Drink kItem = new SailorSoda();
-                switch (k)
-                {
-                    case 0:
-                        kItem = new AretinoAppleJuice();
-                        break;
-                    case 1:
-                        kItem = new CandlehearthCoffee();
-                        break;
-                    case 2:
-                        kItem = new MarkarthMilk();
-                        break;
-                    case 3:
-                        kItem = new SailorSoda();
-                        break;
-                    case 4:
-                        kItem = new WarriorWater();
-                        break;
-                }
-
-                foreach (Size ss in (Size[])Enum.GetValues(typeof(Size)))
-                {
-                    kItem.Size = ss;
-                    if (kItem is SailorSoda)
-                    {
-                        foreach (SodaFlavor f in (SodaFlavor[])Enum.GetValues(typeof(SodaFlavor)))
-                        {
-                            ((SailorSoda)kItem).Flavor = f;
-
-                            Assert.PropertyChanged(combo, "Drink", () =>
-                            {
-                                combo.Drink = kItem;
-                            });
-                        }
-                    }
-                    else
-                    {
-                        Assert.PropertyChanged(combo, "Drink", () =>
-                        {
-                            combo.Drink = kItem;
-                        });
-                    }
-                }
-            }
-        }
-
 
         [Fact]
         public void ReturnsRightPriceCaloriesToStringAndInstructions()

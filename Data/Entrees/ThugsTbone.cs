@@ -26,6 +26,15 @@ namespace BleakwindBuffet.Data.Entrees
         public override List<string> SpecialInstructions => new List<string>();
 
         /// <summary>
+        /// return ToString
+        /// </summary>
+        /// <returns>string "[Size] Aretino Apple Juice"</returns>
+        public string Name
+        {
+            get => ToString();
+        }
+
+        /// <summary>
         /// overrides default returned string
         /// </summary>
         /// <returns>string "Thugs T-Bone"</returns>

@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{B66B462C-DA57-4DB7-9053-DEBD3953F479}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTests", "DataTests\DataTests.csproj", "{E7D3695C-73E4-473F-9AB5-D8700821CBD3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8EC4CA62-3839-4D44-BAD8-278F4A1F0431} = {8EC4CA62-3839-4D44-BAD8-278F4A1F0431}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointOfSale", "PointOfSale\PointOfSale.csproj", "{8EC4CA62-3839-4D44-BAD8-278F4A1F0431}"
 EndProject

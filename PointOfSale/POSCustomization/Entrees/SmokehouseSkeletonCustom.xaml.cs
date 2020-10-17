@@ -19,6 +19,8 @@ using System.Windows.Shapes;
 
 namespace PointOfSale.POSCustomization.Entrees
 {
+    //Heroin
+
     /// <summary>
     /// Interaction logic for SmokehouseSkeletonCustom.xaml
     /// </summary>

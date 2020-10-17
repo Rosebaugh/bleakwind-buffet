@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Author: Caleb Rosebaugh
+ * Class: Order.cs
+ * Purpose: Adapt BleakwindBuffet.Data.Order for New order for WPF application
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
@@ -11,9 +16,9 @@ using BleakwindBuffet.Data.Drinks;
 
 namespace PointOfSale
 {
-    public class Order : ObservableCollection<IOrderItem>
+    public class Order : BleakwindBuffet.Data.Order
     {
-
+        public int OrderNumber { get; set; }
         /// <summary>
         /// Adds event listen at start
         /// </summary>
@@ -25,7 +30,7 @@ namespace PointOfSale
         /// <summary>
         /// total calories of all items
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -41,7 +46,7 @@ namespace PointOfSale
         /// <summary>
         /// subtotal of all items
         /// </summary>
-        public string Subtotal
+        public override string Subtotal
         {
             get
             {
@@ -55,14 +60,9 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// taxpercent for all items
-        /// </summary>
-        private double taxPercent = 0.12;
-
-        /// <summary>
         /// gets or sets taxPercent
         /// </summary>
-        public double TaxPercent
+        public override double TaxPercent
         {
             get
             {
@@ -77,7 +77,7 @@ namespace PointOfSale
         /// <summary>
         /// total Tax for all items
         /// </summary>
-        public string Tax
+        public override string Tax
         {
             get
             {
@@ -88,7 +88,7 @@ namespace PointOfSale
         /// <summary>
         /// total for all items
         /// </summary>
-        public string Total
+        public override string Total
         {
             get
             {
@@ -162,7 +162,7 @@ namespace PointOfSale
         /// <param name="e">arg</param>
         void CollectionItemChangedListener(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Price")
+            if (e.PropertyName == "Price" || e.PropertyName == "Calories")
             {
                 OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
                 OnPropertyChanged(new PropertyChangedEventArgs("Tax"));

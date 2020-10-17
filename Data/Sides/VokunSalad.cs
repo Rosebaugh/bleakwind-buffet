@@ -56,6 +56,7 @@ namespace BleakwindBuffet.Data.Sides
                 NotifyPropertyChanged("Size");
                 NotifyPropertyChanged("Price");
                 NotifyPropertyChanged("Calories");
+                NotifyPropertyChanged("Name");
             }
         }
 
@@ -81,6 +82,14 @@ namespace BleakwindBuffet.Data.Sides
             }
         }
 
+        /// <summary>
+        /// return ToString
+        /// </summary>
+        /// <returns>string "[Size] Aretino Apple Juice"</returns>
+        public string Name
+        {
+            get => ToString();
+        }
 
         /// <summary>
         /// gets the special instructions on making the Vokun Salad

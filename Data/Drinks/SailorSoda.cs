@@ -55,6 +55,7 @@ namespace BleakwindBuffet.Data.Drinks
                 NotifyPropertyChanged("Size");
                 NotifyPropertyChanged("Price");
                 NotifyPropertyChanged("Calories");
+                NotifyPropertyChanged("Name");
             }
         }
 
@@ -138,7 +139,17 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 flavor = value;
                 NotifyPropertyChanged("Flavor");
+                NotifyPropertyChanged("Name");
             }
+        }
+
+        /// <summary>
+        /// return ToString
+        /// </summary>
+        /// <returns>string "[Size] Aretino Apple Juice"</returns>
+        public string Name
+        {
+            get => ToString();
         }
 
         /// <summary>
