@@ -59,246 +59,372 @@
     <h5>COMBO MEAL DEAL</h5>
     <p>Combo Meals include one entree, side and drink</p>
     <p>Ask for a Combo meal and get $1 off!</p>
-    <div id="Menu" style="display: inline-block; align-content: center">
-        <div class="row">
-            <div class="column">
-                <h2>Entrees</h2>
-                @foreach (IOrderItem item in Menu.Entrees())
-                {
-                    <div class="menu-item">
-                        <h4>@item.ToString()</h4>
-                        $@item.Price
-                        Cal: @item.Calories
+    <style>
+        #SearchTerms td {
+            border: none;
+        }
+    </style>
+    <br />
+    <h6>In a rush?<br /> Quickly search for your preferences!</h6>
+    <form>
+        <table id="SearchTerms" style="width:100%" border="1" cellpadding="5">
+            <tr>
+                <td>
+                    <div id="price">
+                        <h4>Price</h4>
+                        <div>
+                            Between
+                            <input name="PriceMin" type="number" min="0" max="1000" step=".01" placeholder="min" value="@Model.PriceMin" />
+                            and
+                            <input name="PriceMax" type="number" min="0" max="1000" step=".01" placeholder="max" value="@Model.PriceMax" />
+                        </div>
                     </div>
-                }
-            </div>
-            <div class="column">
-                <h2>Sides</h2>
-                @{ Size[] sizes = new Size[Enum.GetValues(typeof(Size)).Length];
-                    double[] Prices = new double[Enum.GetValues(typeof(Size)).Length];
-                    uint[] Cals = new uint[Enum.GetValues(typeof(Size)).Length];
-                    int count = 0;
-                    string curItem = "";
-                    List<IOrderItem> sides = (List<IOrderItem>)Menu.Sides();
-                    sides.Add(sides[0]);
-                }
-                @foreach (IOrderItem item in sides)
-                {
-
-
-                    @if (curItem != item.ToString().Replace(((Side)item).Size.ToString() + " ", "") && curItem != "")
-                    {
-                        <div class="menu-item">
-
-                            <h4>@curItem</h4>
-                            <div class="row">
-                                <div class="column">
-                                    <div>Calories</div>
-                                    <div>Sizes</div>
-                                    <div>Price</div>
+                </td>
+                <td>
+                    <div id="itemtype">
+                        <label>
+                            <input type="checkbox" name="Category" value="Entree" checked="@Model.Category.Contains("Entree")" />
+                            Entree
+                        </label>
+                        <label>
+                            <input type="checkbox" name="Category" value="Side" checked="@Model.Category.Contains("Side")" />
+                            Side
+                        </label>
+                        <label>
+                            <input type="checkbox" name="Category" value="Drink" checked="@Model.Category.Contains("Drink")" />
+                            Drink
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div id="calcount">
+                        <h4>Calorie Count</h4>
+                        <div>
+                            Between
+                            <input name="CalorieMin" type="number" min="0" max="1000" step="1" placeholder="min" value="@Model.CalorieMin" />
+                            and
+                            <input name="CalorieMax" type="number" min="0" max="1000" step="1" placeholder="max" value="@Model.CalorieMax" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div id="search">
+                        <input type="text" name="SearchTerms" value="@Model.SearchTerms" />
+                        <input type="submit" value="Search" />
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <br />
+                <div id="Menu" style="display: inline-block; align-content: center">
+                    <div class="row">
+                        <div class="column">
+                            <h2>Entrees</h2>
+                            @foreach (IOrderItem item in Model.Entrees)
+                            {
+                                <div class="menu-item">
+                                    <h4>@item.ToString()</h4>
+                                    $@item.Price
+                                    Cal: @item.Calories
                                 </div>
-                                @for (int i = 0; i < sizes.Length; i++)
+                            }
+                        </div>
+                        <div class="column">
+                            <h2>Sides</h2>
+                            @{ Size[] sizes = new Size[Enum.GetValues(typeof(Size)).Length];
+                                double[] Prices = new double[Enum.GetValues(typeof(Size)).Length];
+                                uint[] Cals = new uint[Enum.GetValues(typeof(Size)).Length];
+                                int count = 0;
+                                string curItem = "";
+                                List<IOrderItem> sides = (List<IOrderItem>)Model.Sides;
+                                if (sides.Count() != 0)
                                 {
-                                    if (i != count)
+                                    if(sides[sides.Count - 1] is DragonbornWaffleFries)
                                     {
-                                        <div class="column">
-                                            <div class="cal">@Cals[i]</div>
-                                            <div class="size">@sizes[i]</div>
-                                            <div class="price">$@Prices[i]</div>
-                                        </div>
+                                        sides.Add(new VokunSalad());
+                                    }
+                                    else
+                                    {
+                                        sides.Add(new DragonbornWaffleFries());
                                     }
                                 }
-                            </div>
+                            }
 
-                        </div>
-                        curItem = item.ToString().Replace(((Side)item).Size.ToString() + " ", "");
-                        count = 0;
-                        sizes[count] = ((Side)item).Size;
-                        Prices[count] = ((Side)item).Price;
-                        Cals[count] = ((Side)item).Calories;
-                        count++;
-                    }
-                    else
-                    {
-                        if (curItem == "")
-                        {
-                            curItem = item.ToString().Replace(((Side)item).Size.ToString() + " ", "");
-                        }
-                        sizes = new Size[Enum.GetValues(typeof(Size)).Length];
-                        Prices = new double[Enum.GetValues(typeof(Size)).Length];
-                        Cals = new uint[Enum.GetValues(typeof(Size)).Length];
-                        sizes[count] = ((Side)item).Size;
-                        Prices[count] = ((Side)item).Price;
-                        Cals[count] = ((Side)item).Calories;
-                        count++;
-                    }
-                }
-            </div>
-            <div class="column">
-                <h2>Drinks</h2>
-                @{ sizes = new Size[Enum.GetValues(typeof(Size)).Length];
-                    Prices = new double[Enum.GetValues(typeof(Size)).Length];
-                    Cals = new uint[Enum.GetValues(typeof(Size)).Length];
-                    bool decaf = false;
-                    List<SodaFlavor> flavors = new List<SodaFlavor>();
-                    foreach (SodaFlavor flavor in Enum.GetValues(typeof(SodaFlavor)))
-                    {
-                        flavors.Add(flavor);
-                    }
-                    count = 0;
-                    curItem = "";
-                    List<IOrderItem> drinks = (List<IOrderItem>)Menu.Drinks();
-                    /*
-                    string kmk = "";
-                    foreach (IOrderItem drink in drinks)
-                    {
-                        kmk += drink.ToString() + "\n";
-                    }
-                    <script>alert("@kmk");</script>
-                    //*/
-                    drinks.Add(drinks[0]);
-                }
+                            @foreach (IOrderItem item in sides)
+                            {
 
-                @foreach (IOrderItem item in drinks)
-                {
 
-                    if (((Drink)item) is CandlehearthCoffee && item.ToString().Contains("Decaf"))
-                    {
-
-                    }
-                    else if (((Drink)item) is SailorSoda && !(item.ToString().Contains("Blackberry")))
-                    {
-
-                    }
-                    else if (curItem != item.ToString().Replace(((Drink)item).Size.ToString() + " ", "") && curItem != "" && !(item is SailorSoda && curItem.Contains("Sailor")))
-                    {
-                        <div class="menu-item">
-
-                            <h4>@curItem</h4>
-                            <div class="row">
-                                <div class="column">
-                                    <div>Calories</div>
-                                    <div>Sizes</div>
-                                    <div>Price</div>
-                                    @if (decaf)
-                                    {<div>Styles</div>}
-                                </div>
-                                @for (int i = 0; i < sizes.Length; i++)
+                                @if (curItem != item.ToString().Replace(((Side)item).Size.ToString() + " ", "") && curItem != "")
                                 {
-                                    if (i != count)
-                                    {
-                                        <div class="column">
-                                            <div class="cal">@Cals[i]</div>
-                                            <div class="size">@sizes[i]</div>
-                                            <div class="price">$@Prices[i]</div>
-                                            @if (decaf)
+                                    <div class="menu-item">
+
+                                        <h4>@curItem</h4>
+                                        <div class="row">
+                                            <div class="column">
+                                                <div>Calories</div>
+                                                <div>Sizes</div>
+                                                <div>Price</div>
+                                            </div>
+                                            @for (int i = 0; i < sizes.Length; i++)
                                             {
-                                                if (i == 0)
+                                                if (i < count)
                                                 {
-                                                    <div class="decaf">Regular</div>
-                                                }
-                                                else if (i == 1)
-                                                {
-                                                    <div class="decaf">Decaf</div>
+                                                    <div class="column">
+                                                        <div class="cal">@Cals[i]</div>
+                                                        <div class="size">@sizes[i]</div>
+                                                        <div class="price">$@Prices[i]</div>
+                                                    </div>
                                                 }
                                             }
                                         </div>
+
+                                    </div>
+                                    curItem = item.ToString().Replace(((Side)item).Size.ToString() + " ", "");
+                                    count = 0;
+                                    sizes = new Size[Enum.GetValues(typeof(Size)).Length];
+                                    Prices = new double[Enum.GetValues(typeof(Size)).Length];
+                                    Cals = new uint[Enum.GetValues(typeof(Size)).Length];
+                                    sizes[count] = ((Side)item).Size;
+                                    Prices[count] = ((Side)item).Price;
+                                    Cals[count] = ((Side)item).Calories;
+                                    count++;
+                                }
+                                else
+                                {
+                                    if (curItem == "")
+                                    {
+                                        curItem = item.ToString().Replace(((Side)item).Size.ToString() + " ", "");
+                                        sizes = new Size[Enum.GetValues(typeof(Size)).Length];
+                                        Prices = new double[Enum.GetValues(typeof(Size)).Length];
+                                        Cals = new uint[Enum.GetValues(typeof(Size)).Length];
+                                        count = 0;
+                                    }
+                                    sizes[count] = ((Side)item).Size;
+                                    Prices[count] = ((Side)item).Price;
+                                    Cals[count] = ((Side)item).Calories;
+                                    count++;
+                                }
+                            }
+                        </div>
+                        <div class="column">
+                            <h2>Drinks</h2>
+                            @{ sizes = new Size[Enum.GetValues(typeof(Size)).Length];
+                                Prices = new double[Enum.GetValues(typeof(Size)).Length];
+                                Cals = new uint[Enum.GetValues(typeof(Size)).Length];
+                                bool decaf = false;
+                                List<SodaFlavor> flavors = new List<SodaFlavor>();
+                                foreach (SodaFlavor flavor in Enum.GetValues(typeof(SodaFlavor)))
+                                {
+                                    flavors.Add(flavor);
+                                }
+                                count = 0;
+                                curItem = "";
+                                List<IOrderItem> drinks = (List<IOrderItem>)Model.Drinks;
+                                /*
+                                string kmk = "";
+                                foreach (IOrderItem drink in drinks)
+                                {
+                                    kmk += drink.ToString() + "\n";
+                                }
+                                <script>alert("@kmk");</script>
+                                //*/
+                                if (drinks.Count() != 0)
+                                {
+                                    if (drinks[drinks.Count - 1] is AretinoAppleJuice)
+                                    {
+                                        drinks.Add(new WarriorWater());
+                                    }
+                                    else
+                                    {
+                                        drinks.Add(new AretinoAppleJuice());
                                     }
                                 }
-                            </div>
+                            }
 
+                            @foreach (IOrderItem item in drinks)
+                            {
+
+                                if (((Drink)item) is CandlehearthCoffee && item.ToString().Contains("Decaf"))
+                                {
+
+                                }
+                                else if (((Drink)item) is SailorSoda && !(item.ToString().Contains("Blackberry")))
+                                {
+
+                                }
+                                else if (curItem != item.ToString().Replace(((Drink)item).Size.ToString() + " ", "") && curItem != "" && !(item is SailorSoda && curItem.Contains("Sailor")))
+                                {
+                                    <div class="menu-item">
+
+                                        <h4>@curItem</h4>
+                                        <div class="row">
+                                            <div class="column">
+                                                <div>Calories</div>
+                                                <div>Sizes</div>
+                                                <div>Price</div>
+                                                @if (decaf)
+                                                {<div>Styles</div>}
+                                            </div>
+                                            @for (int i = 0; i < sizes.Length; i++)
+                                            {
+                                                <div class="column">
+                                                    @if (i < count)
+                                                    {
+                                                            <div class="cal">@Cals[i]</div>
+                                                            <div class="size">@sizes[i]</div>
+                                                            <div class="price">$@Prices[i]</div>
+                                                            @if (decaf)
+                                                            {
+                                                                if (i == 0)
+                                                                {
+                                                                    <div class="decaf">Regular</div>
+                                                                }
+                                                                else if (i == 1)
+                                                                {
+                                                                    <div class="decaf">Decaf</div>
+                                                                }
+                                                            }
+                                                    }
+                                                    else
+                                                    {
+                                                        string space = "#";
+                                                        <div class="cal" style="color: transparent">@space</div>
+                                                        <div class="size" style="color: transparent">@space</div>
+                                                        <div class="price" style="color: transparent">@space</div>
+                                                        @if (decaf)
+                                                        {
+                                                            if (i == 0)
+                                                            {
+                                                                <div class="decaf">Regular</div>
+                                                            }
+                                                            else if (i == 1)
+                                                            {
+                                                                <div class="decaf">Decaf</div>
+                                                            }
+                                                        }
+                                                    }
+                                                </div>
+                                            }
+                                        </div>
+
+                                    </div>
+                                    if (((Drink)item) is SailorSoda soda)
+                                    {
+                                        decaf = false;
+                                        curItem = item.ToString().Replace(soda.Size.ToString() + " " + soda.Flavor.ToString() + " ", "");
+                                    }
+                                    else if (((Drink)item) is CandlehearthCoffee coffee)
+                                    {
+                                        decaf = true;
+                                        if (coffee.Decaf)
+                                        {
+                                            curItem = item.ToString().Replace("Decaf " + coffee.Size.ToString() + " ", "");
+                                        }
+                                        else
+                                        {
+                                            curItem = item.ToString().Replace(coffee.Size.ToString() + " ", "");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        decaf = false;
+                                        curItem = item.ToString().Replace(((Drink)item).Size.ToString() + " ", "");
+                                    }
+                                    sizes = new Size[Enum.GetValues(typeof(Size)).Length];
+                                    Prices = new double[Enum.GetValues(typeof(Size)).Length];
+                                    Cals = new uint[Enum.GetValues(typeof(Size)).Length];
+                                    count = 0;
+                                    sizes[count] = ((Drink)item).Size;
+                                    Prices[count] = ((Drink)item).Price;
+                                    Cals[count] = ((Drink)item).Calories;
+                                    count++;
+                                }
+                                else
+                                {
+                                    if (curItem == "")
+                                    {
+                                        if (((Drink)item) is SailorSoda soda1)
+                                        {
+                                            decaf = false;
+                                            curItem = item.ToString().Replace(soda1.Size.ToString() + " " + soda1.Flavor.ToString() + " ", "");
+                                        }
+                                        else if (((Drink)item) is CandlehearthCoffee coffee)
+                                        {
+                                            decaf = true;
+                                            if (coffee.Decaf)
+                                            {
+                                                curItem = item.ToString().Replace("Decaf " + coffee.Size.ToString() + " ", "");
+                                            }
+                                            else
+                                            {
+                                                curItem = item.ToString().Replace(coffee.Size.ToString() + " ", "");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            decaf = false;
+                                            curItem = item.ToString().Replace(((Drink)item).Size.ToString() + " ", "");
+                                        }
+                                    }
+
+                                    if (((Drink)item) is SailorSoda soda)
+                                    {
+                                        decaf = false;
+                                    }
+                                    else if (((Drink)item) is CandlehearthCoffee coffee)
+                                    {
+                                        decaf = true;
+                                        if (coffee.Decaf)
+                                        {
+                                            curItem = item.ToString().Replace("Decaf " + coffee.Size.ToString() + " ", "");
+                                        }
+                                        else
+                                        {
+                                            curItem = item.ToString().Replace(coffee.Size.ToString() + " ", "");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        decaf = false;
+                                        curItem = item.ToString().Replace(((Drink)item).Size.ToString() + " ", "");
+                                    }
+                                    try
+                                    {
+                                        sizes[count] = ((Drink)item).Size;
+                                        Prices[count] = ((Drink)item).Price;
+                                        Cals[count] = ((Drink)item).Calories;
+                                        count++;
+                                    }
+                                    catch
+                                    {
+                                        string message = item.ToString() + ": " + sizes[0].ToString() + " " + sizes[1].ToString() + " " + sizes[2].ToString();
+                                        <script>alert("@message")</script>
+                                    }
+                                }
+                            }
+                            @{
+                                string flav = "";
+                                SodaFlavor last = Enum.GetValues(typeof(SodaFlavor)).Cast<SodaFlavor>().Max();
+                                foreach (SodaFlavor flavor in flavors)
+                                {
+                                    if (flavor != last)
+                                    {
+                                        flav += flavor.ToString() + ", ";
+                                    }
+                                    else
+                                    {
+                                        flav += flavor.ToString();
+                                    }
+                                }
+                            }
+                            <h4> Flavors: </h4>
+                            <div>@flav</div>
                         </div>
-                        if (((Drink)item) is SailorSoda soda)
-                        {
-                            decaf = false;
-                            curItem = item.ToString().Replace(soda.Size.ToString() + " " + soda.Flavor.ToString() + " ", "");
-                        }
-                        else if (((Drink)item) is CandlehearthCoffee coffee)
-                        {
-                            decaf = true;
-                            if (coffee.Decaf)
-                            {
-                                curItem = item.ToString().Replace("Decaf " + coffee.Size.ToString() + " ", "");
-                            }
-                            else
-                            {
-                                curItem = item.ToString().Replace(coffee.Size.ToString() + " ", "");
-                            }
-                        }
-                        else
-                        {
-                            decaf = false;
-                            curItem = item.ToString().Replace(((Drink)item).Size.ToString() + " ", "");
-                        }
-                        sizes = new Size[Enum.GetValues(typeof(Size)).Length];
-                        Prices = new double[Enum.GetValues(typeof(Size)).Length];
-                        Cals = new uint[Enum.GetValues(typeof(Size)).Length];
-                        count = 0;
-                        sizes[count] = ((Drink)item).Size;
-                        Prices[count] = ((Drink)item).Price;
-                        Cals[count] = ((Drink)item).Calories;
-                        count++;
-                    }
-                    else
-                    {
-                        if (curItem == "")
-                        {
-                            curItem = item.ToString().Replace(((Drink)item).Size.ToString() + " ", "");
-                        }
-
-                        if (((Drink)item) is SailorSoda soda)
-                        {
-                            decaf = false;
-                        }
-                        else if (((Drink)item) is CandlehearthCoffee coffee)
-                        {
-                            decaf = true;
-                            if (coffee.Decaf)
-                            {
-                                curItem = item.ToString().Replace("Decaf " + coffee.Size.ToString() + " ", "");
-                            }
-                            else
-                            {
-                                curItem = item.ToString().Replace(coffee.Size.ToString() + " ", "");
-                            }
-                        }
-                        else
-                        {
-                            decaf = false;
-                            curItem = item.ToString().Replace(((Drink)item).Size.ToString() + " ", "");
-                        }
-                        try
-                        {
-                            sizes[count] = ((Drink)item).Size;
-                            Prices[count] = ((Drink)item).Price;
-                            Cals[count] = ((Drink)item).Calories;
-                            count++;
-                        }
-                        catch
-                        {
-                            string message = item.ToString() + ": " + sizes[0].ToString() + " " + sizes[1].ToString() + " " + sizes[2].ToString();
-                            <script>alert("@message")</script>
-                        }
-                    }
-                }
-                @{
-                    string flav = "";
-                    SodaFlavor last = Enum.GetValues(typeof(SodaFlavor)).Cast<SodaFlavor>().Max();
-                    foreach (SodaFlavor flavor in flavors)
-                    {
-                        if (flavor != last)
-                        {
-                            flav += flavor.ToString() + ", ";
-                        }
-                        else
-                        {
-                            flav += flavor.ToString();
-                        }
-                    }
-                }
-                        <h4> Flavors: </h4>
-                        <div>@flav</div>
-            </div>
-        </div>
-    </div>
+                    </div>
+                </div>
+</form>
 </div>

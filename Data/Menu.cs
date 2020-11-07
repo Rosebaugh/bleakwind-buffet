@@ -85,7 +85,6 @@ namespace BleakwindBuffet.Data
                 }
 
             }
-
             return sides;
 
         }
@@ -105,7 +104,7 @@ namespace BleakwindBuffet.Data
             {
                 if (f == last)
                 {
-                    k = 5;
+                    k = 4;
                     j = 6;
                 }
                 for (int i = k; i < j; i++)
@@ -160,6 +159,167 @@ namespace BleakwindBuffet.Data
                 j = 5;
             }
             return drinks;
+        }
+
+        /// <summary>
+        /// Searches list for IOrderItems that include the Phase as its ToString()
+        /// </summary>
+        /// <param name="List">List Of IOrderItems</param>
+        /// <param name="phrase">Phrase to search for</param>
+        /// <returns>List of IOrderItems that contain the phrase</returns>
+        public static IEnumerable<IOrderItem> Search(IEnumerable<IOrderItem> List, string phrase)
+        {
+            if (phrase == null) return List;
+
+            List<IOrderItem> menu = new List<IOrderItem>();
+            foreach (IOrderItem item in List)
+            {
+                if (item.ToString().Contains(phrase))
+                {
+                    menu.Add(item);
+                }
+            }
+            return menu;
+        }
+
+        /// <summary>
+        /// Searches list for IOrderItems that include one of the Categories
+        /// </summary>
+        /// <param name="List">List Of IOrderItems</param>
+        /// <param name="Categories">List Of Categories</param>
+        /// <returns>List of IOrderItems that contain a Categorie</returns>
+        public static IEnumerable<IOrderItem> FilterByCategory(IEnumerable<IOrderItem> List, IEnumerable<string> Categories)
+        {
+            if (Categories.Count() == 0) return List;
+
+            List<IOrderItem> menu = new List<IOrderItem>();
+            foreach (IOrderItem item in List)
+            {
+                if (Categories.Contains("Entree"))
+                {
+                    if (item is Entree)
+                    {
+                        menu.Add(item);
+                    }
+                }
+                if (Categories.Contains("Side"))
+                {
+                    if (item is Side)
+                    {
+                        menu.Add(item);
+                    }
+                }
+                if (Categories.Contains("Drink"))
+                {
+                    if (item is Drink)
+                    {
+                        menu.Add(item);
+                    }
+                }
+            }
+            return menu;
+        }
+
+        /// <summary>
+        /// Searches list for IOrderItems that Calories falls between min and max
+        /// </summary>
+        /// <param name="List">List Of IOrderItems</param>
+        /// <param name="min">lower limit of the Calories</param>
+        /// <param name="max">upper limit of the Calories</param>
+        /// <returns>List of IOrderItems that Calories is between min and max</returns>
+        public static IEnumerable<IOrderItem> FilterByCalories(IEnumerable<IOrderItem> List, int? min, int? max)
+        {
+            if (min == null && max == null) return List;
+
+            else if (min == null)
+            {
+                List<IOrderItem> menu = new List<IOrderItem>();
+                foreach (IOrderItem item in List)
+                {
+                    if (item.Calories <= max)
+                    {
+                        menu.Add(item);
+                    }
+                }
+                return menu;
+            }
+
+            else if (max == null)
+            {
+                List<IOrderItem> menu = new List<IOrderItem>();
+                foreach (IOrderItem item in List)
+                {
+                    if (item.Calories >= min)
+                    {
+                        menu.Add(item);
+                    }
+                }
+                return menu;
+            }
+
+            else
+            {
+                List<IOrderItem> menu = new List<IOrderItem>();
+                foreach (IOrderItem item in List)
+                {
+                    if (item.Calories >= min && item.Calories <= max)
+                    {
+                        menu.Add(item);
+                    }
+                }
+                return menu;
+            }
+        }
+
+        /// <summary>
+        /// Searches list for IOrderItems that price falls between min and max
+        /// </summary>
+        /// <param name="List">List Of IOrderItems</param>
+        /// <param name="min">lower limit of the price</param>
+        /// <param name="max">upper limit of the price</param>
+        /// <returns>List of IOrderItems that price is between min and max</returns>
+        public static IEnumerable<IOrderItem> FilterByPrice(IEnumerable<IOrderItem> List, double? min, double? max)
+        {
+            if (min == null && max == null) return List;
+
+            else if (min == null)
+            {
+                List<IOrderItem> menu = new List<IOrderItem>();
+                foreach (IOrderItem item in List)
+                {
+                    if(item.Price <= max)
+                    {
+                        menu.Add(item);
+                    }
+                }
+                return menu;
+            }
+
+            else if (max == null)
+            {
+                List<IOrderItem> menu = new List<IOrderItem>();
+                foreach (IOrderItem item in List)
+                {
+                    if (item.Price >= min)
+                    {
+                        menu.Add(item);
+                    }
+                }
+                return menu;
+            }
+
+            else
+            {
+                List<IOrderItem> menu = new List<IOrderItem>();
+                foreach (IOrderItem item in List)
+                {
+                    if (item.Price >= min && item.Price <= max)
+                    {
+                        menu.Add(item);
+                    }
+                }
+                return menu;
+            }
         }
     }
 }
