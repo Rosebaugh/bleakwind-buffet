@@ -86,6 +86,105 @@ namespace Website.Pages
             Sides = Menu.Sides();
             Drinks = Menu.Drinks();
 
+            if(SearchTerms != null && SearchTerms != "")
+            {
+                string[] array = SearchTerms.Split(' ');
+                int count = 0;
+                foreach(string k in array)
+                {
+                    array[count] = k.ToLower();
+                    count++;
+                }
+
+                Entrees = Entrees.Where(entree => Entrees.ToString() != null && (entree.ToString().Contains(SearchTerms, StringComparison.OrdinalIgnoreCase) || array.Any(entree.Description.ToLower().Contains)));
+                Sides = Sides.Where(side => Sides.ToString() != null && (side.ToString().Contains(SearchTerms, StringComparison.OrdinalIgnoreCase) || array.Any(side.Description.ToLower().Contains)));
+                Drinks = Drinks.Where(drink => Drinks.ToString() != null && (drink.ToString().Contains(SearchTerms, StringComparison.OrdinalIgnoreCase) || array.Any(drink.Description.ToLower().Contains)));
+
+
+            }
+
+            if(Category.Count() != 0)
+            {
+                bool[] cont = new bool[3];
+
+                foreach(string item in Category)
+                {
+                    switch (item)
+                    {
+                        case "Entree":
+                            cont[0] = true;
+                            break;
+                        case "Side":
+                            cont[1] = true;
+                            break;
+                        case "Drink":
+                            cont[2] = true;
+                            break;
+                    }
+                }
+                if (!cont[0])
+                {
+                    Entrees = new List<IOrderItem>();
+                }
+                if (!cont[1])
+                {
+                    Sides = new List<IOrderItem>();
+                }
+                if (!cont[2])
+                {
+                    Drinks = new List<IOrderItem>();
+                }
+            }
+
+            ///?PriceMin=0&PriceMax=1&Category=Side&CalorieMin=0&CalorieMax=100&SearchTerms=vokun
+
+            if (CalorieMin != null && CalorieMax == null)
+            {
+                Entrees = Entrees.Where(entree => entree.Calories >= CalorieMin);
+                Sides = Sides.Where(side => side.Calories >= CalorieMin);
+                Drinks = Drinks.Where(drink => drink.Calories >= CalorieMin);
+            }
+
+            if (CalorieMin == null && CalorieMax != null)
+            {
+                Entrees = Entrees.Where(entree => entree.Calories <= CalorieMax);
+                Sides = Sides.Where(side => side.Calories <= CalorieMax);
+                Drinks = Drinks.Where(drink => drink.Calories <= CalorieMax);
+            }
+
+            if (CalorieMin != null && CalorieMax != null)
+            {
+                Entrees = Entrees.Where(entree => entree.Calories >= CalorieMin && entree.Calories <= CalorieMax);
+                Sides = Sides.Where(side => side.Calories >= CalorieMin && side.Calories <= CalorieMax);
+                Drinks = Drinks.Where(drink => drink.Calories >= CalorieMin && drink.Calories <= CalorieMax);
+            }
+
+            if (PriceMin != null && PriceMax == null)
+            {
+                Entrees = Entrees.Where(entree => entree.Price >= PriceMin);
+                Sides = Sides.Where(side => side.Price >= PriceMin);
+                Drinks = Drinks.Where(drink => drink.Price >= PriceMin);
+            }
+
+            if (PriceMin == null && PriceMax != null)
+            {
+                Entrees = Entrees.Where(entree => entree.Price <= PriceMax);
+                Sides = Sides.Where(side => side.Price <= PriceMax);
+                Drinks = Drinks.Where(drink => drink.Price <= PriceMax);
+            }
+
+            if (PriceMin != null && PriceMax != null)
+            {
+                Entrees = Entrees.Where(entree => entree.Price >= PriceMin && entree.Price <= PriceMax);
+                Sides = Sides.Where(side => side.Price >= PriceMin && side.Price <= PriceMax);
+                Drinks = Drinks.Where(drink => drink.Price >= PriceMin && drink.Price <= PriceMax);
+            }
+
+            Entrees = Entrees.ToList();
+            Sides = Sides.ToList();
+            Drinks = Drinks.ToList();
+
+            /*
             Entrees = Menu.Search(Entrees, SearchTerms);
             Sides = Menu.Search(Sides, SearchTerms);
             Drinks = Menu.Search(Drinks, SearchTerms);
@@ -100,7 +199,7 @@ namespace Website.Pages
 
             Entrees = Menu.FilterByPrice(Entrees, PriceMin, PriceMax);
             Sides = Menu.FilterByPrice(Sides, PriceMin, PriceMax);
-            Drinks = Menu.FilterByPrice(Drinks, PriceMin, PriceMax);
+            Drinks = Menu.FilterByPrice(Drinks, PriceMin, PriceMax);*/
         }
     }
 }

@@ -156,5 +156,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             var fm = new FriedMiraak();
             Assert.IsAssignableFrom<INotifyPropertyChanged>(fm);
         }
+
+        [Fact]
+        public void ReturnsCorrectDescription()
+        {
+            var fm = new FriedMiraak();
+            string description = "Perfectly prepared hash brown pancakes.";
+            Assert.Equal(description, fm.Description);
+        }
     }
 }

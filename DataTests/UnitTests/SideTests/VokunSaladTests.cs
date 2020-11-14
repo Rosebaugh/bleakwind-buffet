@@ -153,8 +153,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [Fact]
         public void ImplementsINotifyPropertyChangedInterface()
         {
-            var mog = new MadOtarGrits();
-            Assert.IsAssignableFrom<INotifyPropertyChanged>(mog);
+            var vs = new VokunSalad();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(vs);
+        }
+
+        [Fact]
+        public void ReturnsCorrectDescription()
+        {
+            var vs = new VokunSalad();
+            string description = "A seasonal fruit salad of mellons, berries, mango, grape, apple, and oranges.";
+            Assert.Equal(description, vs.Description);
         }
     }
 }

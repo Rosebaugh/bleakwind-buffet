@@ -13,6 +13,7 @@ using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Sides;
 using BleakwindBuffet.Data.Enums;
+using System.Globalization;
 
 namespace BleakwindBuffet.Data
 {
@@ -174,7 +175,7 @@ namespace BleakwindBuffet.Data
             List<IOrderItem> menu = new List<IOrderItem>();
             foreach (IOrderItem item in List)
             {
-                if (item.ToString().Contains(phrase))
+                if (item.ToString().IndexOf(phrase, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     menu.Add(item);
                 }

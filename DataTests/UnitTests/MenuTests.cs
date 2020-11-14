@@ -313,5 +313,329 @@ namespace BleakwindBuffet.DataTests.UnitTests
             Assert.True(DrinkFlavorsOnlyAppearOnce);
             Assert.True(OnlyDrinksAppear);
         }
+
+        [Theory]
+        [InlineData(1, null, null)]
+        [InlineData(2, null, null)]
+        [InlineData(3, null, null)]
+        [InlineData(1, 100, null)]
+        [InlineData(2, 50, null)]
+        [InlineData(3, 50, null)]
+        [InlineData(1, null, 200)]
+        [InlineData(2, null, 300)]
+        [InlineData(3, null, 200)]
+        [InlineData(1, 100, 200)]
+        [InlineData(2, 50, 300)]
+        [InlineData(3, 50, 200)]
+        public void MenuFilteredByCalories(int itemtype, int? min, int? max)
+        {
+            IEnumerable<IOrderItem> Menu = new List<IOrderItem>();
+            switch (itemtype)
+            {
+                case 1:
+                    Menu = Data.Menu.Entrees();
+                    break;
+                case 2:
+                    Menu = Data.Menu.Sides();
+                    break;
+                case 3:
+                    Menu = Data.Menu.Drinks();
+                    break;
+            }
+
+            Menu = Data.Menu.FilterByCalories(Menu, min, max);
+
+            if (min == null && max == null)
+            {
+                List<IOrderItem> basecase;
+                int count = 0;
+                switch (itemtype)
+                {
+                    case 1:
+                        basecase = (List<IOrderItem>)Data.Menu.Entrees();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                    case 2:
+                        basecase = (List<IOrderItem>)Data.Menu.Sides();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                    case 3:
+                        basecase = (List<IOrderItem>)Data.Menu.Drinks();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                }
+            }
+            else if (min == null)
+            {
+                foreach (IOrderItem item in Menu)
+                {
+                    Assert.True(item.Calories <= max);
+                }
+            }
+            else if (max == null)
+            {
+                foreach (IOrderItem item in Menu)
+                {
+                    Assert.True(item.Calories >= min);
+                }
+            }
+            else
+            {
+                foreach (IOrderItem item in Menu)
+                {
+                    Assert.True(item.Calories >= min);
+                    Assert.True(item.Calories <= max);
+                }
+            }
+        }
+
+        [Theory]
+        [InlineData(1, 1)]
+        [InlineData(2, 1)]
+        [InlineData(3, 1)]
+        [InlineData(1, 2)]
+        [InlineData(2, 2)]
+        [InlineData(3, 2)]
+        [InlineData(1, 3)]
+        [InlineData(2, 3)]
+        [InlineData(3, 3)]
+        [InlineData(1, 4)]
+        [InlineData(2, 4)]
+        [InlineData(3, 4)]
+        public void MenuFilteredByCategory(int itemtype, int CAT)
+        {
+            IEnumerable<IOrderItem> Menu = new List<IOrderItem>();
+            List<IOrderItem> basecase = (List<IOrderItem>)Data.Menu.Entrees();
+            switch (itemtype)
+            {
+                case 1:
+                    Menu = Data.Menu.Entrees();
+                    basecase = (List<IOrderItem>)Data.Menu.Entrees();
+                    break;
+                case 2:
+                    Menu = Data.Menu.Sides();
+                    basecase = (List<IOrderItem>)Data.Menu.Sides();
+                    break;
+                case 3:
+                    Menu = Data.Menu.Drinks();
+                    basecase = (List<IOrderItem>)Data.Menu.Drinks();
+                    break;
+            }
+            List<string> cat = new List<string>();
+            switch (CAT)
+            {
+                case 1:
+                    cat.Add("Entree");
+                    break;
+                case 2:
+                    cat.Add("Side");
+                    break;
+                case 3:
+                    cat.Add("Drink");
+                    break;
+            }
+
+
+            Menu = Data.Menu.FilterByCategory(Menu, cat);
+
+            int count = 0;
+            foreach (IOrderItem item in Menu)
+            {
+                switch (CAT)
+                {
+                    case 1:
+                        Assert.True(item is Entree);
+                        break;
+                    case 2:
+                        Assert.True(item is Side);
+                        break;
+                    case 3:
+                        Assert.True(item is Drink);
+                        break;
+                    case 4:
+                        Assert.Equal(basecase[count].GetType(), item.GetType());
+                        count++;
+                        break;
+                }
+            }
+        }
+
+
+        [Theory]
+        [InlineData(1, null, null)]
+        [InlineData(2, null, null)]
+        [InlineData(3, null, null)]
+        [InlineData(1, 3.2, null)]
+        [InlineData(2, 2, null)]
+        [InlineData(3, 1, null)]
+        [InlineData(1, null, 6.99)]
+        [InlineData(2, null, 2.99)]
+        [InlineData(3, null, 3)]
+        [InlineData(1, 3.20, 6.99)]
+        [InlineData(2, 2, 2.99)]
+        [InlineData(3, 1, 3)]
+        public void MenuFilteredByPrice(int itemtype, double? min, double? max)
+        {
+            IEnumerable<IOrderItem> Menu = new List<IOrderItem>();
+            switch (itemtype)
+            {
+                case 1:
+                    Menu = Data.Menu.Entrees();
+                    break;
+                case 2:
+                    Menu = Data.Menu.Sides();
+                    break;
+                case 3:
+                    Menu = Data.Menu.Drinks();
+                    break;
+            }
+
+            Menu = Data.Menu.FilterByPrice(Menu, min, max);
+
+            if (min == null && max == null)
+            {
+                List<IOrderItem> basecase;
+                int count = 0;
+                switch (itemtype)
+                {
+                    case 1:
+                        basecase = (List<IOrderItem>)Data.Menu.Entrees();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                    case 2:
+                        basecase = (List<IOrderItem>)Data.Menu.Sides();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                    case 3:
+                        basecase = (List<IOrderItem>)Data.Menu.Drinks();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                }
+            }
+            else if (min == null)
+            {
+                foreach (IOrderItem item in Menu)
+                {
+                    Assert.True(item.Price <= max);
+                }
+            }
+            else if (max == null)
+            {
+                foreach (IOrderItem item in Menu)
+                {
+                    Assert.True(item.Price >= min);
+                }
+            }
+            else
+            {
+                foreach (IOrderItem item in Menu)
+                {
+                    Assert.True(item.Price >= min);
+                    Assert.True(item.Price <= max);
+                }
+            }
+        }
+
+        [Theory]
+        [InlineData(1, null)]
+        [InlineData(2, null)]
+        [InlineData(3, null)]
+        [InlineData(1, "")]
+        [InlineData(2, "")]
+        [InlineData(3, "")]
+        [InlineData(1, "peanut")]
+        [InlineData(2, "peanut")]
+        [InlineData(3, "peanut")]
+        [InlineData(1, "soda")]
+        [InlineData(3, "soda")]
+        [InlineData(2, "soda")]
+        [InlineData(1, "p")]
+        [InlineData(3, "p")]
+        [InlineData(2, "p")]
+        [InlineData(1, "skeleton")]
+        [InlineData(3, "oar")]
+        [InlineData(2, "warrior")]
+        public void MenuFilteredBySearch(int itemtype, string search)
+        {
+            IEnumerable<IOrderItem> Menu = new List<IOrderItem>();
+            switch (itemtype)
+            {
+                case 1:
+                    Menu = Data.Menu.Entrees();
+                    break;
+                case 2:
+                    Menu = Data.Menu.Sides();
+                    break;
+                case 3:
+                    Menu = Data.Menu.Drinks();
+                    break;
+            }
+
+            Menu = Data.Menu.Search(Menu, search);
+
+            if(search == "" || search == null)
+            {
+                List<IOrderItem> basecase;
+                int count = 0;
+                switch (itemtype)
+                {
+                    case 1:
+                        basecase = (List<IOrderItem>)Data.Menu.Entrees();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                    case 2:
+                        basecase = (List<IOrderItem>)Data.Menu.Sides();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                    case 3:
+                        basecase = (List<IOrderItem>)Data.Menu.Drinks();
+                        foreach (IOrderItem item in Menu)
+                        {
+                            Assert.Equal(basecase[count].GetType(), item.GetType());
+                            count++;
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                foreach(IOrderItem item in Menu)
+                {
+                    Assert.True(item.ToString().IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+            }
+        }
     }
 }

@@ -207,5 +207,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             var goo = new GardenOrcOmelette();
             Assert.IsAssignableFrom<INotifyPropertyChanged>(goo);
         }
+
+        [Fact]
+        public void ReturnsCorrectDescription()
+        {
+            var goo = new GardenOrcOmelette();
+            string description = "Vegetarian. Two egg omelette packed with a mix of broccoli, mushrooms, and tomatoes. Topped with cheddar cheese.";
+            Assert.Equal(description, goo.Description);
+        }
     }
 }

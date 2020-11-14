@@ -69,3 +69,88 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+#Menu {
+    width: 100%;
+    align-content: center;
+    float: none;
+    text-align: center;
+    justify-content: center
+}
+
+form{
+    align-content:center;
+}
+
+.column > h2{
+    text-align: center;
+}
+
+.flex-columns {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    float: none;
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+    padding-bottom: 25px; /*space between items*/
+    justify-content: safe center;
+}
+
+.flex-columns > .column {
+    align-content: center;
+    padding-left: 15px; /*space between different sizes*/
+    padding-right: 15px; /*space between different sizes*/
+}
+
+.sizeinformation {
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-item {
+    text-align: center;
+}
+
+.flavors > h4{
+    max-width: none;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 15px; /*space between different sizes*/
+    padding-right: 15px; /*space between different sizes*/
+}
+
+.flavors {
+    max-width: 240px;
+}
+
+.menu-item > div.description {
+    padding-bottom: 50px !important;
+    color: purple !important;
+}
+
+#SearchTerms td {
+    border: none;
+}
+
+@media (max-width: 490px) { /*if screen's width is less than 490 pixels*/
+
+    #Menu.flex-columns {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .flavors {
+        max-width: 240px;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding-left: 15px; /*space between different sizes*/
+        padding-right: 15px; /*space between different sizes*/
+    }
+}

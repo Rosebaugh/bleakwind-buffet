@@ -205,5 +205,17 @@ namespace BleakwindBuffet.Data
         {
             return entree.ToString() + "\n" + side.ToString() + "\n" + drink.ToString();
         }
+
+        /// <summary>
+        /// returns nothing
+        /// </summary>
+        /// <returns>returns ""</returns>
+        public string Description
+        {
+            get
+            {
+                return "";
+            }
+        }
     }
 }

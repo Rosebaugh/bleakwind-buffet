@@ -34,6 +34,7 @@ namespace BleakwindBuffet.Data.Drinks
                 }
             }
         }
+
         /// <summary>
         /// size of drink
         /// </summary>
@@ -192,6 +193,18 @@ namespace BleakwindBuffet.Data.Drinks
             else
             {
                 return Size.ToString() + " Candlehearth Coffee";
+            }
+        }
+
+        /// <summary>
+        /// overrides default returned desciption
+        /// </summary>
+        /// <returns>string "Fair trade, fresh ground dark roast coffee."</returns>
+        public override string Description
+        {
+            get
+            {
+                return "Fair trade, fresh ground dark roast coffee.";
             }
         }
     }

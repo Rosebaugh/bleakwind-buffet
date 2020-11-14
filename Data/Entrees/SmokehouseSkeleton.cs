@@ -10,14 +10,17 @@ using System.Text;
 namespace BleakwindBuffet.Data.Entrees
 {
     public class SmokehouseSkeleton : Entree
-    {/// <summary>
-     /// Gets the price of the breakfast
-     /// </summary>
+    {   
+        /// <summary>
+        /// Gets the price of the breakfast
+        /// </summary>
         public override double Price => 5.62;
+
         /// <summary>
         /// Gets the calories of the breakfast
         /// </summary>
         public override uint Calories => 602;
+
         /// <summary>
         /// gets the special instructions on making the breakfast
         /// </summary>
@@ -154,6 +157,18 @@ namespace BleakwindBuffet.Data.Entrees
         public override string ToString()
         {
             return "Smokehouse Skeleton";
+        }
+
+        /// <summary>
+        /// overrides default returned desciption
+        /// </summary>
+        /// <returns>string "Put some meat on those bones with a small stack of pancakes. Includes sausage links, eggs, and hash browns on the side. Topped with the syrup of your choice."</returns>
+        public override string Description
+        {
+            get
+            {
+                return "Put some meat on those bones with a small stack of pancakes. Includes sausage links, eggs, and hash browns on the side. Topped with the syrup of your choice.";
+            }
         }
     }
 }

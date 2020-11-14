@@ -129,5 +129,17 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Philly Poacher";
         }
+
+        /// <summary>
+        /// overrides default returned desciption
+        /// </summary>
+        /// <returns>string "Cheesesteak sandwich made from grilled sirloin, topped with onions on a fried roll."</returns>
+        public override string Description
+        {
+            get
+            {
+                return "Cheesesteak sandwich made from grilled sirloin, topped with onions on a fried roll.";
+            }
+        }
     }
 }

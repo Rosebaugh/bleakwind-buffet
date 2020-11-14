@@ -61,7 +61,6 @@ namespace BleakwindBuffet.Data.Drinks
             }
         }
 
-
         /// <summary>
         /// Gets the calories of the Drink
         /// </summary>
@@ -138,6 +137,18 @@ namespace BleakwindBuffet.Data.Drinks
         public override string ToString()
         {
             return Size.ToString() + " Aretino Apple Juice";
+        }
+
+        /// <summary>
+        /// overrides default returned desciption
+        /// </summary>
+        /// <returns>string "Fresh squeezed apple juice."</returns>
+        public override string Description
+        {
+            get
+            {
+                return "Fresh squeezed apple juice.";
+            }
         }
     }
 }
